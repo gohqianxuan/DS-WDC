@@ -25,7 +25,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Compile solution
         run: javac solutions/PriorityQueue.java
+      - name: Compile solution
         run: javac solutions/TransactionDetails.java
+      - name: Compile solution
         run: javac solutions/Payment.java
       - name: Test 1
         run: time bash tasks/payment/run.sh
