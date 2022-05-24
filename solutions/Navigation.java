@@ -58,7 +58,7 @@ class Navigation {
             else if (i == 0)
                 System.out.print(path.get(i));
             else
-                System.out.print(path.get(i) + " -> " + path.get(i) + " -> ");
+                System.out.print(path.get(i) + " -> ");
         }
     }
  
