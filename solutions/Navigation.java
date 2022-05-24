@@ -36,15 +36,18 @@ class Navigation {
         adjList.get(vertex.indexOf(v2)).add(v1);
     }        
 
-    private void printShortestDistance(String source, String dest) {
+    private void printShortestDistance(String source, String destination) {
    	// Initialize predecessor array with vertices count
         String[] pred = new String[this.size];
+	    
+	// Call Breadth First Search
+	BFS(source, destination, pred);
 
         // LinkedList to store the path
         LinkedList<String> path = new LinkedList<String>();
 	    
         // Starts from destination and add their previous vertex to the path
-        String crawl = dest;
+        String crawl = destination;
         path.add(crawl);
         while (pred[vertex.indexOf(crawl)] != null) {
             path.add(pred[vertex.indexOf(crawl)]);
@@ -78,7 +81,7 @@ class Navigation {
         visited[vertex.indexOf(source)] = true;
         queue.add(source);
  
-        // Breadth First Seaech Algorithm
+        // Breadth First Search Algorithm
         while (!queue.isEmpty()) {
             String current = queue.removeFirst();
 		
