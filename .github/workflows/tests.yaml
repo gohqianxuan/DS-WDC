@@ -24,10 +24,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Compile solution
-        run: 
-          run javac solutions/TransactionDetails.java
-          run javac solutions/PriorityQueue.java
-          run javac solutions/Payment.java
+        run: javac 
+        working-directory: ./solutions/Payment
       - name: Test 1
         run: time bash tasks/payment/run.sh
       - name: Test 2
