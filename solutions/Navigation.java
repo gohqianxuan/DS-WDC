@@ -1,130 +1,163 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Scanner;
- 
-class Navigation {
-    int size;
-    ArrayList<String> vertex = new ArrayList<>(size);
-    ArrayList<ArrayList<String>> adjList; // list of adjacent vertex
- 
-    public Navigation() {
-        adjList = new ArrayList<>();
+package test;
+
+import java.util.*;
+
+
+public class Navigation {
+
+    // Number of vertices in graph
+    private int v;
+
+    // Vertices list
+    private ArrayList<String> vertex = new ArrayList<>(v);
+
+    // Adjacency list
+    private ArrayList<String>[] adjList;
+
+    // Constructor
+    public Navigation(int vertices)
+    {
+        // Initialise number of vertices
+        this.v = vertices;
+
+        // Initialise adjacency list
+        initAdjList();
     }
-    
-    // Driver Program
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-            
-        // get connections from cases provided
-        int numOfConnections = Integer.parseInt(input.nextLine());
-        Navigation map = new Navigation();
 
-        for (int i = 0; i < numOfConnections; i++) {
-            String[] connection = input.nextLine().split(" => ");
-            String source = connection[0];
-            String destination = connection[1];
+    // Initialise adjacency list
+    @SuppressWarnings("unchecked")
+    private void initAdjList()
+    {
+        // Initialise adjacency list with vertices count
+        adjList = new ArrayList[v];
 
-            map.addEdge(source, destination);
+        for (int i = 0; i < v; i++) {
+            adjList[i] = new ArrayList<>();
         }
-
-        // get rid of the QUERIES line
-        input.nextLine();
-
-        // get queries from the cases provided
-        int numOfQueries = Integer.parseInt(input.nextLine());
-
-        for (int i = 0; i < numOfQueries; i++) {
-            String[] path = input.nextLine().split(" -> ");
-            String from = path[0];
-            String to = path[1];
-
-            map.printShortestDistance(from, to);
-        }
-
-        input.close();
     }
- 
-    // method to form edge between two vertices
-    private void addEdge(String vertex1, String vertex2){
-        if(!vertex.contains(vertex1)) {
-            adjList.add(new ArrayList<String>());
-            vertex.add(vertex1);
-            size++;
-        }
-        
-        if(!vertex.contains(vertex2)) {
-            adjList.add(new ArrayList<String>());
-            vertex.add(vertex2);
-            size++;
-        }
-        
-        adjList.get(vertex.indexOf(vertex1)).add(vertex2);
-        adjList.get(vertex.indexOf(vertex2)).add(vertex1);
-    }
- 
-    // method to print the shortest path between source vertex and destination vertex
-    private void printShortestDistance(String source, String destination) {
-        // predecessor[] array stores predecessor of i 
-        String[] pred = new String[size];
- 
-        if (!BFS(source, destination, pred)) {
-            System.out.println("There isn't a path between " + source + " " + destination + ".");
-            return;
-        }
- 
-        // LinkedList to store the shortest path
+
+    // Add edge (connection between u and v which is bidirectional)
+    public void addEdge(String u, String v)
+    {
+        // Add u and v to vertices list 
+        if(!vertex.contains(u))
+            vertex.add(u);
+        if(!vertex.contains(v))
+            vertex.add(v);
+
+        // Add edge
+        adjList[vertex.indexOf(u)].add(v);
+        adjList[vertex.indexOf(v)].add(u);
+    }        
+
+    private void printShortestDistance(String source, String dest, int v)
+    {
+    // Initialize predecessor array with vertices count
+        String pred[] = new String[v];
+
+        // LinkedList to store path
         LinkedList<String> path = new LinkedList<String>();
-        String crawl = destination;
+        // Starts from destination and add to the path
+        String crawl = dest;
         path.add(crawl);
-        while (pred[vertex.indexOf(crawl)] != null) {
+        while (!pred[vertex.indexOf(crawl)].equalsIgnoreCase("")) 
+        {
             path.add(pred[vertex.indexOf(crawl)]);
             crawl = pred[vertex.indexOf(crawl)];
         }
- 
-        // print the shortest path
-        for (int i = path.size() - 1; i >= 1; i--) {
-            System.out.print(path.get(i) + " -> ");
+
+        // Print path
+        for (int i = path.size() - 1; i >= 0; i--) 
+        {
+            if(i == path.size()-1)
+                System.out.print(path.get(i) + " -> ");
+            else if (i == 0)
+                System.out.print(path.get(i));
+            else
+                System.out.print(path.get(i) + " -> " + path.get(i) + " -> ");
         }
-        System.out.println(path.get(0));
     }
  
-    // a modified version of BFS that stores predecessor of each vertex in predecessor[] array
-    private boolean BFS(String source, String destination, String[] pred) {
-        LinkedList<String> queue = new LinkedList<>();
+    // BFS that stores predecessor of each vertex in array pred
+    private void BFS(String src, String dest, int v, String pred[])
+    {
+        // Queue to maintain queue of vertices whose adjacency list is to be scanned as per normal
+        LinkedList<String> queue = new LinkedList<String>();
  
-        // boolean array visited[] stores the information whether the vertex is visited in the Breadth first search
-        boolean visited[] = new boolean[size];
+        // Boolean array which stores the boolean whether ith vertex is reached
+        boolean visited[] = new boolean[v];
  
-        // initially all vertices are unvisited so v[i] for all i is false
-        for (int i = 0; i < size; i++) 
+        // Initialize all vertex as unreached
+        for (int i = 0; i < v; i++) 
+        {
             visited[i] = false;
+            pred[i] = "";
+        }
  
-        // source is the first to be visited
-        visited[vertex.indexOf(source)] = true;
-        queue.add(source);
+        // Visit source firstly
+        visited[vertex.indexOf(src)] = true;
+        queue.add(src);
  
-        // BFS algorithm
-        while (!queue.isEmpty()) {
-            // dequeue the vertex from the queue
-            String current = queue.removeFirst();
-            int currentIndex = vertex.indexOf(current);
-            
-            // loop to enqueue each vertex connected to current vertex (which hasnt been visited before) 
-            for (String v: adjList.get(currentIndex)) {
-                if (!visited[vertex.indexOf(v)]) {
-                    // set the vertex as visited 
-                    visited[vertex.indexOf(v)] = true;
-                    // set the predecessor of the vertex as current vertex
-                    pred[vertex.indexOf(v)] = current;
-                    // enqueue the vertex
-                    queue.add(v);
- 
-                    // stopping condition (when we find our destination)
-                    if (v.equals(destination))
-                        return true;
+        // Breadth First Seaech Algorithm
+        while (!queue.isEmpty()) 
+        {
+            String u = queue.remove();
+            // Try strings in the adjacent list of u
+            for (String i : adjList[vertex.indexOf(u)]) 
+            {  
+		// If the ith string is not reached yet, change it to reached and add u as its pred
+                // Add ith string to queue
+                // Return the search if ith string equals to destination
+                if (!visited[vertex.indexOf(i)]) 
+                {
+                    visited[vertex.indexOf(i)] = true;
+                    pred[vertex.indexOf(i)] = u;
+                    queue.add(i);
+
+                    if (i.equalsIgnoreCase(dest))
+                        return;
                 }
             }
         }
-        return false;
+    }
+
+    // Tester
+    public static void main(String[] args)
+    {            
+        Scanner sc = new Scanner(System.in);
+        // Get number of test cases
+        int n = sc.nextInt();
+
+        for(int i=0; i<n; i++){
+            // Get number of connections from cases provided
+            int numOfConnections = sc.nextInt();
+            Navigation g = new Navigation(numOfConnections);
+
+            // Add edge for every conncetions
+            for (int j = 0; j < numOfConnections; j++) 
+            {
+                String[] connection = sc.nextLine().split(" => ");
+                String source = connection[0];
+                String destination = connection[1];
+
+                g.addEdge(source, destination);
+            }
+
+            // Get rid of the QUERIES line
+            sc.nextLine();
+
+            // Get queries from the cases provided
+            int numOfQueries = Integer.parseInt(sc.nextLine());
+
+            // Find the shortest path for every queries
+            for (int k = 0; k < numOfQueries; k++) 
+            {
+                String[] path = sc.nextLine().split(" -> ");
+                String from = path[0];
+                String to = path[1];
+
+                g.printShortestDistance(from, to, numOfConnections);
+            }
+        }            
     }
 }
