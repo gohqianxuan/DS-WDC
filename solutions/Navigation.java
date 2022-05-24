@@ -9,7 +9,7 @@ class Navigation {
     private ArrayList<String> vertex = new ArrayList<>();
 
     // Adjacency list to keep adjacent vertices
-    private ArrayList<String> adjList;
+    private ArrayList<ArrayList<String>> adjList;
 
     // Constructor
     public Navigation() {
@@ -32,8 +32,8 @@ class Navigation {
 	}
 
         // Add edge
-        adjList[vertex.indexOf(v1)].add(v2);
-        adjList[vertex.indexOf(v2)].add(v1);
+        adjList.get(vertex.indexOf(v1)).add(v2);
+        adjList.get(vertex.indexOf(v2)).add(v1);
     }        
 
     private void printShortestDistance(String source, String dest) {
@@ -83,7 +83,7 @@ class Navigation {
             String current = queue.removeFirst();
 		
             // Loop to enqueue each vertex connected to current vertex (which hasnt been visited before) 
-            for (String v : adjList[vertex.indexOf(current)]) {  
+            for (String v : adjList.get(vertex.indexOf(current))) {  
 		// If the ith string is not reached yet, change it to reached and add current vertex as its predecessor
                 // Add ith string to queue
                 if (!visited[vertex.indexOf(v)]) {
