@@ -112,7 +112,7 @@ class Navigation {
 
 	for (int i = 0; i < n; i++) {
 		// Add edge for every connections
-		for (int i = 0; i < numOfConnections; i++) {
+		for (int j = 0; j < numOfConnections; j++) {
 			String[] connection = sc.nextLine().split(" => ");
 			String source = connection[0];
 			String destination = connection[1];
