@@ -55,9 +55,11 @@ class Navigation {
         }
 
         // Print the shortest path
-        for (int i = path.size() - 1; i >= 1; i--) 
-            System.out.print(path.get(i) + " -> ");
-        System.out.println(path.get(0));
+        for (int i = path.size() - 1; i >= 0; i--) {
+	    if (i > 0)
+            	System.out.print(path.get(i) + " -> ");
+	    else
+       	 	System.out.println(path.get(0));
     }
  
     // BFS that stores predecessor of each vertex in array pred[]
