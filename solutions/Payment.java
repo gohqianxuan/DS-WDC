@@ -11,8 +11,6 @@ class Payment {
         Scanner in = new Scanner(System.in);
         
         while (true){
-            System.out.println("Enter transaction details");
-
             String data = in.nextLine();
 
             if (data.equalsIgnoreCase("EXIT")){
