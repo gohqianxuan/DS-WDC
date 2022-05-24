@@ -60,6 +60,7 @@ class Navigation {
             	System.out.print(path.get(i) + " -> ");
 	    else
        	 	System.out.println(path.get(0));
+	}
     }
  
     // BFS that stores predecessor of each vertex in array pred[]
