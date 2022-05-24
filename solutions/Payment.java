@@ -1,31 +1,27 @@
-import java.util.Scanner;
+package meowliketrains;
 
+import java.util.LinkedList;
+import java.util.Scanner;
 
 class Payment {
     static PriorityQueue queue1 = new PriorityQueue();
     static TransactionDetails trans;
     static int index;
     static int index2;
+    
     public static void main(String[] args) {
-
-        
         Scanner in = new Scanner(System.in);
-
-            
-            
-
+        
         while (true){
             System.out.println("Enter transaction details");
 
-
             String data = in.nextLine();
-
 
             if (data.equalsIgnoreCase("EXIT")){
                 break;
-            }else if (data.equalsIgnoreCase("REBOOT")){
+            } else if (data.equalsIgnoreCase("REBOOT")){
                 queue1.clear();
-            }else {
+            } else {
                 Long time = Long.parseLong(data.substring(0, 13));
                 String id = data.substring(14, 46);
                 String tier = data.substring(47);
@@ -41,13 +37,9 @@ class Payment {
                         System.out.print(queue1.dequeue() + " ");
                     }
                     break;
-                
                 }
-            
             }
-            
         }
-        
     }
 
     //detect changes in epochTime
@@ -66,12 +58,10 @@ class PriorityQueue {
     LinkedList<TransactionDetails> Prioritylist;
     LinkedList<TransactionDetails> normalList;
 
-
     public PriorityQueue(){
         Prioritylist = new LinkedList<>();
         normalList = new LinkedList<>();
     }
-
 
     public void enqueuePriority(TransactionDetails elem){
         //check whether list is empty
@@ -93,8 +83,6 @@ class PriorityQueue {
         if (positioned == false){
             Prioritylist.addLast(elem);
         }
-
-        
     }
 
     public void enqueueNormal(TransactionDetails elem){
@@ -137,7 +125,6 @@ class TransactionDetails {
     private String transactionID;
     private int timeTier;
     
-
     public TransactionDetails(long time , String ID , String tier){
         this.epochTime = time;
         this.tier = tier;
