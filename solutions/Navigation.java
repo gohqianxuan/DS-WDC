@@ -1,9 +1,6 @@
-package test;
-
 import java.util.*;
 
-
-public class Navigation {
+class Navigation {
 
     // Number of vertices in graph
     private int v;
