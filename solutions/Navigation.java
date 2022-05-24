@@ -103,32 +103,37 @@ class Navigation {
     public static void main(String[] args) {            
         Scanner sc = new Scanner(System.in);
         
+	// Get number of test case
+	int n = Integer.parseInt(sc.nextLine());
+	    
     	// Get number of connections from cases provided
-    	int numOfConnections = sc.nextInt();
+    	int numOfConnections = Integer.parseInt(sc.nextLine());
     	Navigation map = new Navigation();
 
-    	// Add edge for every connections
-    	for (int j = 0; j < numOfConnections; j++) {
-		String[] connection = sc.nextLine().split(" => ");
-		String source = connection[0];
-		String destination = connection[1];
+	for (int i = 0; i < n; i++) {
+		// Add edge for every connections
+		for (int i = 0; i < numOfConnections; i++) {
+			String[] connection = sc.nextLine().split(" => ");
+			String source = connection[0];
+			String destination = connection[1];
 
-		map.addEdge(source, destination);
-    	}
+			map.addEdge(source, destination);
+		}
 
-   	// Get rid of the QUERIES line
-   	sc.nextLine();
+		// Get rid of the QUERIES line
+		sc.nextLine();
 
-    	// Get queries from the cases provided
-    	int numOfQueries = Integer.parseInt(sc.nextLine());
+		// Get queries from the cases provided
+		int numOfQueries = Integer.parseInt(sc.nextLine());
 
-   	// Find the shortest path for every queries
-   	for (int k = 0; k < numOfQueries; k++) {
-		String[] path = sc.nextLine().split(" -> ");
-		String from = path[0];
-		String to = path[1];
+		// Find the shortest path for every queries
+		for (int k = 0; k < numOfQueries; k++) {
+			String[] path = sc.nextLine().split(" -> ");
+			String from = path[0];
+			String to = path[1];
 
-		map.printShortestDistance(from, to);
-   	 }        
+			map.printShortestDistance(from, to);
+		}
+	 }        
     }
 }
