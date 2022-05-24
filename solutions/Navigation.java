@@ -9,7 +9,7 @@ class Navigation {
     private ArrayList<String> vertex = new ArrayList<>();
 
     // Adjacency list to keep adjacent vertices
-    private ArrayList<String>[] adjList;
+    private ArrayList<String> adjList;
 
     // Constructor
     public Navigation() {
