@@ -19,13 +19,13 @@ class Navigation {
     // Add edge (connection between v1 and v2 which is bidirectional)
     public void addEdge(String v1, String v2) {
         // Add v and v to vertices list 
-        if(!vertex.contains(v1)) {
+        if (!vertex.contains(v1)) {
             adjList.add(new ArrayList<String>());
             vertex.add(v1);
             size++;
 	}
 	    
-        if(!vertex.contains(v2)) {
+        if (!vertex.contains(v2)) {
             adjList.add(new ArrayList<String>());
             vertex.add(v2);
             size++;
@@ -55,14 +55,9 @@ class Navigation {
         }
 
         // Print the shortest path
-        for (int i = path.size() - 1; i >= 0; i--) {
-            if(i == path.size()-1)
-                System.out.print(path.get(i) + " -> ");
-            else if (i == 0)
-                System.out.print(path.get(i) + "\n");
-            else
-                System.out.print(path.get(i) + " -> ");
-        }
+        for (int i = path.size() - 1; i >= 1; i--) 
+            System.out.print(path.get(i) + " -> ");
+        System.out.println(path.get(0));
     }
  
     // BFS that stores predecessor of each vertex in array pred[]
@@ -110,7 +105,7 @@ class Navigation {
 	int n = Integer.parseInt(sc.nextLine());
 
 	for (int i = 0; i < n; i++) {
-		// Get number of connections from cases provided
+	        // Get number of connections from cases provided
     		int numOfConnections = Integer.parseInt(sc.nextLine());
     		Navigation map = new Navigation();
 		
