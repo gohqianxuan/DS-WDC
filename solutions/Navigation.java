@@ -1,10 +1,8 @@
-package Navigation;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
  
-public class Navigation {
+class Navigation {
     int size;
     ArrayList<String> vertex = new ArrayList<>(size);
     ArrayList<ArrayList<String>> adjList; // list of adjacent vertex
