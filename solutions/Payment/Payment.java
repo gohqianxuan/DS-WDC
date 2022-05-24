@@ -1,8 +1,7 @@
-package Payment;
 import java.util.Scanner;
 
 
-public class Payment {
+class Payment {
     static PriorityQueue queue1 = new PriorityQueue();
     static TransactionDetails trans;
     static int index;
@@ -49,10 +48,6 @@ public class Payment {
             
         }
         
-        
-        
-        
-        
     }
 
     //detect changes in epochTime
@@ -64,7 +59,127 @@ public class Payment {
             }
             return false;
     }
+}
 
+class PriorityQueue {
     
+    LinkedList<TransactionDetails> Prioritylist;
+    LinkedList<TransactionDetails> normalList;
+
+
+    public PriorityQueue(){
+        Prioritylist = new LinkedList<>();
+        normalList = new LinkedList<>();
+    }
+
+
+    public void enqueuePriority(TransactionDetails elem){
+        //check whether list is empty
+        if (Prioritylist.isEmpty()){
+            Prioritylist.addFirst(elem);
+            return;
+        }
+
+        //queue it according to priority
+        boolean positioned = false;
+        for (int x = 0 ; x< Prioritylist.size() ; x++){
+            if ( elem.getTierTime() > Prioritylist.get(x).getTierTime()){
+                Prioritylist.add(x , elem);
+                positioned = true;
+                break;
+            }
+        }
+
+        if (positioned == false){
+            Prioritylist.addLast(elem);
+        }
+
+        
+    }
+
+    public void enqueueNormal(TransactionDetails elem){
+        if (normalList.isEmpty()){
+            normalList.addFirst(elem);
+        }else {
+            normalList.addLast(elem);
+        }
+    }
+
+    public void clear(){
+        Prioritylist.clear();
+        normalList.clear();
+    }
+
+    public String dequeue(){
+        
+        if (Prioritylist.size() >=100){
+            return Prioritylist.removeFirst().getID();
+        }else {
+            return normalList.removeFirst().getID();
+        }
+    }
+
+    public TransactionDetails contains(int index){        
+        return normalList.get(index);
+        
+    }
+
+
+    public int getSize(){
+        return normalList.size();
+    }
+}
+
+class TransactionDetails {
+
+    private long epochTime;
+    private String tier;
+    private String transactionID;
+    private int timeTier;
     
+
+    public TransactionDetails(long time , String ID , String tier){
+        this.epochTime = time;
+        this.tier = tier;
+        this.transactionID = ID;
+        tierTimeAdvantage();
+    }
+
+
+    //To give the starting time of a transaction in a queue according to tier
+    public void tierTimeAdvantage(){
+        
+        switch(this.tier){
+
+            case "PLATINUM":
+                timeTier = 3000;
+                break;
+            case "GOLD":
+                timeTier = 2000;
+                break;
+            case "SILVER":
+                timeTier = 1000;
+                break;
+            case "BRONZE" :
+                timeTier = 0;
+                break;
+        }
+
+    }
+
+    public long getEpochtime(){
+        return this.epochTime;
+    }
+
+    public String getID(){
+        return this.transactionID;
+    }
+
+    public int getTierTime(){
+        return timeTier;
+    }
+
+    public String toString(){
+        return transactionID + " " + epochTime;
+    }
 }
