@@ -69,7 +69,7 @@ public class Payment {
     
 }
 
-public class TransactionDetails {
+class TransactionDetails {
 
     private long epochTime;
     private String tier;
@@ -128,7 +128,7 @@ public class TransactionDetails {
 }
 
 
-public class PriorityQueue {
+class PriorityQueue {
     
     LinkedList<TransactionDetails> Prioritylist;
     LinkedList<TransactionDetails> normalList;
