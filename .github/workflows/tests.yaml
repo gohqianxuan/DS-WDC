@@ -24,7 +24,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Compile solution
-        run: javac solutions/PrioritytyQueue.java
+        run: javac solutions/PriorityQueue.java
         run: javac solutions/TransactionDetails.java
         run: javac solutions/Payment.java
       - name: Test 1
