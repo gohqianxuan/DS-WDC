@@ -105,12 +105,12 @@ class Navigation {
         
 	// Get number of test case
 	int n = Integer.parseInt(sc.nextLine());
-	    
-    	// Get number of connections from cases provided
-    	int numOfConnections = Integer.parseInt(sc.nextLine());
-    	Navigation map = new Navigation();
 
 	for (int i = 0; i < n; i++) {
+		// Get number of connections from cases provided
+    		int numOfConnections = Integer.parseInt(sc.nextLine());
+    		Navigation map = new Navigation();
+		
 		// Add edge for every connections
 		for (int j = 0; j < numOfConnections; j++) {
 			String[] connection = sc.nextLine().split(" => ");
@@ -119,9 +119,6 @@ class Navigation {
 
 			map.addEdge(source, destination);
 		}
-
-		// Get rid of the QUERIES line
-		sc.nextLine();
 
 		// Get queries from the cases provided
 		int numOfQueries = Integer.parseInt(sc.nextLine());
