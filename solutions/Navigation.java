@@ -126,21 +126,6 @@ public class Navigation {
                         return true;
                 }
             }
-            
-//            for (int i = 0; i < adjList.get(currentIndex).size(); i++) {
-//                if (!visited[vertex.indexOf(adjList.get(currentIndex).get(i))]) {
-//                    // set the vertex as visited 
-//                    visited[vertex.indexOf(adjList.get(currentIndex).get(i))] = true;
-//                    // set the predecessor of the vertex as current vertex
-//                    pred[vertex.indexOf(adjList.get(currentIndex).get(i))] = current;
-//                    // enqueue the vertex
-//                    queue.add(adjList.get(currentIndex).get(i));
-// 
-//                    // stopping condition (when we find our destination)
-//                    if (adjList.get(currentIndex).get(i).equals(destination))
-//                        return true;
-//                }
-//            }
         }
         return false;
     }
