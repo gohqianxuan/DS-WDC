@@ -16,24 +16,24 @@ class Navigation {
         adjList = new ArrayList<>();
     }
 
-    // Add edge (connection between v1 and v2 which is bidirectional)
-    public void addEdge(String v1, String v2) {
+    // Add edge (connection between vertex1 and vertex2 which is bidirectional)
+    public void addEdge(String vertex1, String vertex2) {
         // Add v and v to vertices list 
-        if (!vertex.contains(v1)) {
+        if (!vertex.contains(vertex1)) {
             adjList.add(new ArrayList<String>());
-            vertex.add(v1);
+            vertex.add(vertex1);
             size++;
 	}
 	    
-        if (!vertex.contains(v2)) {
+        if (!vertex.contains(vertex2)) {
             adjList.add(new ArrayList<String>());
-            vertex.add(v2);
+            vertex.add(vertex2);
             size++;
 	}
 
         // Add edge
-        adjList.get(vertex.indexOf(v1)).add(v2);
-        adjList.get(vertex.indexOf(v2)).add(v1);
+        adjList.get(vertex.indexOf(vertex1)).add(vertex2);
+        adjList.get(vertex.indexOf(vertex2)).add(vertex1);
     }        
 
     private void printShortestDistance(String source, String destination) {
