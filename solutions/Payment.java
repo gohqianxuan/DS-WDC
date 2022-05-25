@@ -1,37 +1,30 @@
 import java.util.Scanner;
 import java.util.LinkedList;
+
 public class Payment {
     static PriorityQueue queue1 = new PriorityQueue();
     static TransactionDetails trans;
     static int index;
     static int index2;
     public static void main(String[] args) {
-
-        
         Scanner in = new Scanner(System.in);
 
-            
-            
-
         while (true){
-            System.out.print("INPUT : ");
-
+            //System.out.print("INPUT : ");
 
             String data = in.nextLine();
-
 
             if (data.equalsIgnoreCase("EXIT")){
                 break;
             }else if (data.equalsIgnoreCase("REBOOT")){
                 queue1.clear();
-            }else if (data.equalsIgnoreCase("CLEAR")){
-                while (queue1.getSize() != 0){
-                    System.out.print(queue1.dequeue() + " ");
-                    
+          //  }else if (data.equalsIgnoreCase("CLEAR")){
+          //      while (queue1.getSize() != 0){
+          //         System.out.print(queue1.dequeue() + " ");
                 }
-                System.out.println();
-            }else if (data.equalsIgnoreCase("END")){
-                break;
+            //    System.out.println();
+          //  }else if (data.equalsIgnoreCase("END")){
+            //    break;
             }else {
                 Long time = Long.parseLong(data.substring(0, 13));
                 String id = data.substring(14, 46);
@@ -49,7 +42,6 @@ public class Payment {
                     }
                     System.out.println();
                     break;
-                
                 }
             
             }
