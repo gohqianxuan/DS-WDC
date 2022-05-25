@@ -15,7 +15,7 @@ public class Payment {
         
         
         while (true){
-            System.out.print("INPUT : ");
+            //System.out.print("INPUT : ");
             String data = in.nextLine();
 
             //String data = in.nextLine();
@@ -46,7 +46,7 @@ public class Payment {
                     int size = queue1.getSize();
 
 
-                    System.out.print("OUTPUT : ");
+                    //System.out.print("OUTPUT : ");
                     if (size >= 100){
                         for (int x = 0 ; x<100 ; x++){
                             if (queue1.getSize() != 0 ){
