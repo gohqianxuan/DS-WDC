@@ -54,6 +54,7 @@ public class Payment {
                                 
                             }
                         }
+                        System.out.println();
                         break;
                     }else {
                         for (int x = 0 ; x<100 ; x++){
@@ -62,12 +63,13 @@ public class Payment {
                                 
                             }
                         }
+                        System.out.println();
                         break;
                     }
                     
                     
-                    System.out.println();
-                    break;
+                    
+                    
                 
                 }
             
