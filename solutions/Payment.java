@@ -21,7 +21,7 @@ public class Payment {
           //  }else if (data.equalsIgnoreCase("CLEAR")){
           //      while (queue1.getSize() != 0){
           //         System.out.print(queue1.dequeue() + " ");
-                }
+            //   }
             //    System.out.println();
           //  }else if (data.equalsIgnoreCase("END")){
             //    break;
