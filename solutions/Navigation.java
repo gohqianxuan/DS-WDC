@@ -84,14 +84,14 @@ class Navigation {
 		
             // Loop to enqueue each vertex connected to current vertex (which hasnt been visited before) 
             for (String v : adjList.get(vertex.indexOf(current))) {  
-				// If the ith string is not reached yet, change it to reached and add current vertex as its predecessor
+		// If the ith string is not reached yet, change it to reached and add current vertex as its predecessor
                 // Add ith string to queue
                 if (!visited[vertex.indexOf(v)]) {
                     visited[vertex.indexOf(v)] = true;
                     pred[vertex.indexOf(v)] = current;
                     queue.add(v);
 			
-		    		// Stop the search if ith string equals to destination
+		    // Stop the search if ith string equals to destination
                     if (v.equalsIgnoreCase(destination))
                         return;
                 }
