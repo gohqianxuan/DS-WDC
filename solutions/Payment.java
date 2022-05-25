@@ -62,7 +62,7 @@ public class Payment {
                                 
                             }
                         }
-                        break
+                        break;
                     }
                     
                     
