@@ -43,7 +43,7 @@ public class Payment {
 
                 if (checkTimeChange(trans)){
                     
-                    System.out.print("OUTPUT : ");
+                    //System.out.print("OUTPUT : ");
                     while (queue1.getSize() != 0){
                         System.out.print(queue1.dequeue() + " ");
                     }
