@@ -54,6 +54,7 @@ public class Payment {
                                 
                             }
                         }
+                        break;
                     }else {
                         for (int x = 0 ; x<100 ; x++){
                             if (queue1.getSize() != 0 ){
@@ -61,6 +62,7 @@ public class Payment {
                                 
                             }
                         }
+                        break
                     }
                     
                     
