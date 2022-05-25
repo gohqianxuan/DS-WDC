@@ -10,7 +10,7 @@ public class Payment {
         Scanner in = new Scanner(System.in);
 
         while (true){
-            //System.out.print("INPUT : ");
+            System.out.print("INPUT : ");
 
             String data = in.nextLine();
 
@@ -18,13 +18,13 @@ public class Payment {
                 break;
             }else if (data.equalsIgnoreCase("REBOOT")){
                 queue1.clear();
-          //  }else if (data.equalsIgnoreCase("CLEAR")){
-          //      while (queue1.getSize() != 0){
-          //         System.out.print(queue1.dequeue() + " ");
-            //   }
-            //    System.out.println();
-          //  }else if (data.equalsIgnoreCase("END")){
-            //    break;
+            }else if (data.equalsIgnoreCase("CLEAR")){
+                while (queue1.getSize() != 0){
+                   System.out.print(queue1.dequeue() + " ");
+               }
+                System.out.println();
+            }else if (data.equalsIgnoreCase("END")){
+                break;
             }else {
                 Long time = Long.parseLong(data.substring(0, 13));
                 String id = data.substring(14, 46);
@@ -203,12 +203,6 @@ class PriorityQueue {
         return 0;
         
     }
-
-    
-    
-    
-
-    
 }
 
 
