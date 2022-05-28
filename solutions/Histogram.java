@@ -55,6 +55,7 @@ public class Histogram {
                         for (Integer each : counts) {
                                 System.out.print(each + " ");
                         }
+			System.out.println();
                 }
 	}
 }
