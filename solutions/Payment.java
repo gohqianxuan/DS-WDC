@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Collections;
+
 
 
 public class Payment {
@@ -136,9 +136,6 @@ class TransactionDetail {
         calculateWaitingTime(time);
     }
 
-
-    //maybe can try to cut to five digits then operation might be less
-    // To give the starting time of a transaction in a queue according to tier
     public void calculateWaitingTime(long time) {
 
         switch (this.tier) {
@@ -158,17 +155,9 @@ class TransactionDetail {
 
     }
 
-    
-    public String getID() {
-        return this.transactionID;
-    }
 
     public long getWaitingTime() {
         return this.waitingTime;
-    }
-
-    public void addWaitingTime(){
-        this.waitingTime += 1000;
     }
 
     public long getEpochtime(){
