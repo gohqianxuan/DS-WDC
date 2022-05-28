@@ -27,7 +27,7 @@ public class Histogram {
             temp = min;
             int counter = 0;
             while (temp <= max) {
-                cutoffs[count] = temp;
+                cutoffs[counter] = temp;
                 temp += increment;
                 counter++;
                 }
