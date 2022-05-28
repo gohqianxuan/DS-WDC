@@ -34,7 +34,7 @@ public class Histogram {
                         int k = cutoffs.get(temp);
                         int counter = 0;
                         for (int j = 0; j < histogramSize; j++) {
-                                if (histArr.get(i) < k) {
+                                if (histArr.get(j) < k) {
                                         counter++;
                                 } else {
                                         temp++;
