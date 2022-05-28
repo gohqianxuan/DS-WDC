@@ -53,7 +53,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Compile solution
-        run: javac solutions/Histogram2.java
+        run: javac solutions/Histogram.java
       - name: Test 1
         run: time bash tasks/histogram/run.sh
       - name: Test 2
