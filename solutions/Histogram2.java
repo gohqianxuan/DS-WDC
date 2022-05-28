@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Histogram2 {
 
 	public static void main(String[] args) {
+	//try{    
             Scanner scanner = new Scanner(System.in);
             int numCase = scanner.nextInt();
 
@@ -13,41 +14,43 @@ public class Histogram2 {
                 int histogramSize = scanner.nextInt();
                 int bin = scanner.nextInt();
                 int temp;
+                
                 List<Integer> histArr = new ArrayList<>();
-                List<Integer> cutoffs = new ArrayList<>();
-                List<Integer> counts = new ArrayList<>();
-
-                for (int j = 0; j < histogramSize; j++) {
-                    temp = scanner.nextInt();
-                    histArr.add(temp);
-                }
+                int[] cutoffs = new int[bin+1];
+                int[] counts = new int[bin];
+                
+                for (int j = 0; j < histogramSize; j++) 
+                    histArr.add(scanner.nextInt());
                 
                 int min = Collections.min(histArr);
                 int max = Collections.max(histArr);
                 int increment = (max - min) / bin;
+                
                 temp = min;
+                int count = 0;
                 while (temp <= max) {
-                        cutoffs.add(temp);
-                        temp += increment;
+                    cutoffs[count] = temp;
+                    temp += increment;
+                    count++;
                 }
                 
                 Collections.sort(histArr);
                 temp = 1;
-                int k = cutoffs.get(temp);
+                int nextBin = cutoffs[temp];
                 int counter = 0;
                 
                 for (int j = 0; j < histogramSize; j++) {
-                    if (histArr.get(j) < k) {
+                    if (histArr.get(j) < nextBin) {
                         counter++;
                     } else {
                         temp++;
-                        if (temp == cutoffs.size()) {
-                                counts.add(++counter);
+                        if (temp == cutoffs.length) {
+                                counts[temp-2] = ++counter;
                                 break;
                         }
-                        counts.add(counter);
+                        counts[temp-2] = counter;
                         counter = 1;
-                        k = cutoffs.get(temp);
+                        nextBin = cutoffs[temp];
                     }
                 }
 
@@ -58,6 +61,9 @@ public class Histogram2 {
                 for (Integer each : counts) {
                     System.out.print(each + " ");
                 }
+                System.out.println();
             }
+            //scanner.close();
+        //} catch (FileNotFoundException e) {}
     }
 }
