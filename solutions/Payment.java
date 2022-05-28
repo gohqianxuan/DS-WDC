@@ -18,6 +18,7 @@ public class Payment {
            
                 Scanner in = new Scanner(System.in);
                 String data = in.nextLine();
+        while (in.hasNextLine()){
                 if (data.equals("END")){
                     System.exit(0);
                 }else if (data.equals("REBOOT")){
@@ -50,6 +51,7 @@ public class Payment {
                 }
                     
            
+    }
     }
 
     //classify data to epochTime , tier and transactionID
