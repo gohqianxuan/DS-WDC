@@ -21,7 +21,7 @@ public class Payment {
             System.out.println("Please enter your transaction time, id and tier: ");
             transaction = in.nextLine();
             if (transaction.equals("EXIT")) {
-                Systen.exit(0);
+                System.exit(0);
             }
             details = transaction.split(" ");
             timer = Long.parseLong(details[0]);
