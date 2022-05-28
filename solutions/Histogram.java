@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Histogram9 {
+public class Histogram {
     
     public static void main(String[] args) {
     
