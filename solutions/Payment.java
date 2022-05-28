@@ -25,7 +25,10 @@ public class Payment {
                     break;
                 }else if (data.equals("REBOOT")){
                     queue.clear();
-                }else {
+                }else if(data.length() < 13){
+                    continue;
+                }
+                else {
                     if(queue.get(0)!=null && index3<index1){
                         timer1 = queue.get(0).getEpochtime();
                         index1 = (int) (timer1 % 10000 / 1000); 
