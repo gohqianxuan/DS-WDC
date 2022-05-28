@@ -13,12 +13,9 @@ public class Payment {
     public static void main(String[] args) {
         
         
-        //read file data
-        //try {
-        //    Scanner in = new Scanner(new FileInputStream("C:\\Users\\timot\\OneDrive\\Desktop\\um y2s2\\data structure\\Payment\\0.txt"));
+        
             
-            //while (true){
-                //String data = in.nextLine();
+           
                 Scanner in = new Scanner(System.in);
                 String data = in.nextLine();
                 if (data.equals("END")){
@@ -52,14 +49,7 @@ public class Payment {
                     index1 = index3 = index2;
                 }
                     
-            //}
-
-                
-            
-            
-         //catch (FileNotFoundException e) {
-          //  System.out.println("File not found");
-        //}
+           
     }
 
     //classify data to epochTime , tier and transactionID
