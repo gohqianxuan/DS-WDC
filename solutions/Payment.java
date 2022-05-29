@@ -65,13 +65,16 @@ public class Payment {
     //classify data to epochTime , tier and transactionID
     public static TransactionDetail processData(String data){
 
-        
-        time = Long.parseLong(data.substring(0, 13));
-        id = data.substring(14, 46);
-        tier = data.substring(47);
+        if (data.length() > 15){
+            time = Long.parseLong(data.substring(0, 13));
+            id = data.substring(14, 46);
+            tier = data.substring(47);
 
-        trans = new TransactionDetail(time, id, tier);
-        return trans;
+            trans = new TransactionDetail(time, id, tier);
+            return trans;
+        }
+        return null;
+        
     }
 
 }
