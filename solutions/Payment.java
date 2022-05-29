@@ -48,12 +48,12 @@ public class Payment {
                         if (queue.getSize() < 100){
                             int size = queue.getSize();
                             for (int x = 0; x<size ; x++){
-                                System.out.print(queue.dequeue().toString() + " ");                            
+                                System.out.println(queue.dequeue().toString() + " ");                            
                             }
                         }else {
                             queue.mergeSort();
                             for (int x = 0 ; x < 100 ; x++){
-                                System.out.print(queue.dequeue().toString() + " ");                            
+                                System.out.println(queue.dequeue().toString() + " ");                            
                             }
                             System.out.println();
                         }
