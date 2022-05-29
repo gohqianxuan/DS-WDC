@@ -15,14 +15,13 @@ public class Payment {
         //read file data
         //try {
             //Scanner in = new Scanner(new FileInputStream("C:\\Users\\timot\\OneDrive\\Desktop\\um y2s2\\data structure\\Payment\\0.txt"));
-            
+            Scanner in = new Scanner(System.in);
+            String data = in.nextLine();
             while (true){
 
-                Scanner in = new Scanner(System.in);
-                String data = in.nextLine();
-                if (data.equals("EXIT")){
-                    break;
-                    
+                
+                if (data.equals("EXIT") || data.length() < 15){
+                    break;                    
                 }else if (data.equals("REBOOT")){
                     queue.clear();
                 }else {
@@ -65,15 +64,12 @@ public class Payment {
     //classify data to epochTime , tier and transactionID
     public static TransactionDetail processData(String data){
 
-        if (data.length() > 15){
             time = Long.parseLong(data.substring(0, 13));
             id = data.substring(14, 46);
             tier = data.substring(47);
 
             trans = new TransactionDetail(time, id, tier);
             return trans;
-        }
-        return null;
         
     }
 
@@ -142,10 +138,7 @@ class Queue {
         priorityList = new ArrayList<>();
     }
 
-    public void enqueue(TransactionDetail elements){
-        if(elements == null) return;
-
-        
+    public void enqueue(TransactionDetail elements){        
         if (priorityList.size() == 0 ){
             priorityList.add(0,elements);;
         }else {
@@ -234,10 +227,6 @@ class TransactionDetail {
 
     public long getWaitingTime() {
         return this.waitingTime;
-    }
-
-    public void addWaitingTime(){
-        this.waitingTime += 1000;
     }
 
     public long getEpochtime(){
