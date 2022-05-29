@@ -17,12 +17,12 @@ public class Payment {
         //try {
             //Scanner in = new Scanner(new FileInputStream(""));
             
-            //while (true){
+            while (true){
 
                 Scanner in = new Scanner(System.in);
                 String data = in.nextLine();
                 if (data.equals("EXIT") || data.length() < 15){
-                    System.exit(0);;
+                    break;
                 }else if (data.equals("REBOOT")){
                     queue.clear();
                 }else {
@@ -63,7 +63,7 @@ public class Payment {
                 }
                     
             }
-        //}
+        }
 
                 
             
