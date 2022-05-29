@@ -16,13 +16,13 @@ public class Payment {
         //try {
             //Scanner in = new Scanner(new FileInputStream("C:\\Users\\timot\\OneDrive\\Desktop\\um y2s2\\data structure\\Payment\\0.txt"));
             
-            //while (in.hasNextLine()){
+            while (true){
 
                 Scanner in = new Scanner(System.in);
                 String data = in.nextLine();
                 if (data.equals("EXIT")){
-                    //break;
-                    System.exit(0);
+                    break;
+                    
                 }else if (data.equals("REBOOT")){
                     queue.clear();
                 }else {
@@ -51,7 +51,7 @@ public class Payment {
                     index1 = index3 = index2;
                 }
                     
-            //}
+            }
         //}
 
                 
