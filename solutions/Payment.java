@@ -1,6 +1,7 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Payment {
     static Long time;
@@ -14,17 +15,18 @@ public class Payment {
         
         //read file data
         //try {
-            //Scanner in = new Scanner(new FileInputStream("C:\\Users\\timot\\OneDrive\\Desktop\\um y2s2\\data structure\\Payment\\0.txt"));
-            Scanner in = new Scanner(System.in);
-            String data = in.nextLine();
+            //Scanner in = new Scanner(new FileInputStream(""));
+            
             while (true){
 
-                
-                if (data.equals("EXIT") || data.length() < 15){
-                    break;                    
+                Scanner in = new Scanner(System.in);
+                String data = in.nextLine();
+                if (data.equals("EXIT")){
+                    break;
                 }else if (data.equals("REBOOT")){
                     queue.clear();
                 }else {
+                    //check time change
                     if(queue.get(0)!=null && index3<index1){
                         timer1 = queue.get(0).getEpochtime();
                         index1 = (int) (timer1 % 10000 / 1000); 
@@ -32,6 +34,7 @@ public class Payment {
         
                     queue.enqueue(processData(data));
                     //System.out.println(time + " " + id + " " + tier);
+                    //check time change
                     timer2 = processData(data).getEpochtime();
                     index2 = (int) (timer2 % 10000 /1000);
 
@@ -40,10 +43,17 @@ public class Payment {
                         index1 = (int) (timer1 % 10000 / 1000); 
                         break;
                     }
+                    //dequeue
                     if(index2 > index1){
+                        if (queue.getSize() < 100){
+                            for (int x = 0; x<queue.getSize() ; x++){
+                                System.out.print(queue.dequeue().toString() + " ");                            
+                            }
+                            break;
+                        }
                         queue.mergeSort();
                         for (int x = 0 ; x < 100 ; x++){
-                            System.out.print(queue.dequeue().toString());                            
+                            System.out.print(queue.dequeue().toString() + " ");                            
                         }
                         System.out.println();
                     }
@@ -51,29 +61,34 @@ public class Payment {
                 }
                     
             }
-        //}
+        }
 
                 
             
             
         // catch (FileNotFoundException e) {
-            //System.out.println("File not found");
+        //    System.out.println("File not found");
         //}
-    }
+    //}
 
     //classify data to epochTime , tier and transactionID
     public static TransactionDetail processData(String data){
 
-            time = Long.parseLong(data.substring(0, 13));
-            id = data.substring(14, 46);
-            tier = data.substring(47);
-
-            trans = new TransactionDetail(time, id, tier);
-            return trans;
         
+        time = Long.parseLong(data.substring(0, 13));
+        id = data.substring(14, 46);
+        tier = data.substring(47);
+
+        trans = new TransactionDetail(time, id, tier);
+        return trans;
     }
 
 }
+
+
+
+
+
 
 
 class MergeSort {
@@ -138,19 +153,13 @@ class Queue {
         priorityList = new ArrayList<>();
     }
 
-    public void enqueue(TransactionDetail elements){        
+    public void enqueue(TransactionDetail elements){
         if (priorityList.size() == 0 ){
             priorityList.add(0,elements);;
         }else {
             priorityList.add(elements);
         }
     }
-
-    public void setPriorityList(ArrayList<TransactionDetail> list){
-        Collections.copy(priorityList, list);
-    }
-
-
     public void clear() {
         priorityList.clear();
     }
@@ -159,6 +168,11 @@ class Queue {
         return priorityList.size();
     }
 
+    //public ArrayList<TransactionDetail> sort(){
+    //    MergeSort sort = new MergeSort(priorityList);
+    //    sort.divideArrayElements(0, priorityList.size()-1);
+    //    return sort.getArrayAfterSorting();
+    //}
     public TransactionDetail dequeue(){
         if (priorityList.isEmpty()) return null;
         return priorityList.remove(0);
@@ -176,13 +190,7 @@ class Queue {
         MergeSort.mergeSort(priorityList, 0, priorityList.size()-1);
     }
 
-    
-    
-
-
-
 }
-
 
 class TransactionDetail {
 
@@ -220,11 +228,6 @@ class TransactionDetail {
 
     }
 
-    
-    public String getID() {
-        return this.transactionID;
-    }
-
     public long getWaitingTime() {
         return this.waitingTime;
     }
@@ -238,5 +241,3 @@ class TransactionDetail {
     }
 
 }
-
-
