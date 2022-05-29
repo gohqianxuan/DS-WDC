@@ -17,12 +17,12 @@ public class Payment {
         //try {
             //Scanner in = new Scanner(new FileInputStream(""));
             
-            while (true){
+            //while (true){
 
                 Scanner in = new Scanner(System.in);
                 String data = in.nextLine();
-                if (data.equals("EXIT")){
-                    break;
+                if (data.equals("EXIT") || data.length() < 15){
+                    System.exit(0);;
                 }else if (data.equals("REBOOT")){
                     queue.clear();
                 }else {
@@ -46,22 +46,24 @@ public class Payment {
                     //dequeue
                     if(index2 > index1){
                         if (queue.getSize() < 100){
-                            for (int x = 0; x<queue.getSize() ; x++){
+                            int size = queue.getSize();
+                            for (int x = 0; x<size ; x++){
                                 System.out.print(queue.dequeue().toString() + " ");                            
                             }
-                            break;
+                        }else {
+                            queue.mergeSort();
+                            for (int x = 0 ; x < 100 ; x++){
+                                System.out.print(queue.dequeue().toString() + " ");                            
+                            }
+                            System.out.println();
                         }
-                        queue.mergeSort();
-                        for (int x = 0 ; x < 100 ; x++){
-                            System.out.print(queue.dequeue().toString() + " ");                            
-                        }
-                        System.out.println();
+                        
                     }
                     index1 = index3 = index2;
                 }
                     
             }
-        }
+        //}
 
                 
             
