@@ -15,7 +15,7 @@ public class Payment {
         
         //read file data
         //try {
-            //Scanner in = new Scanner(new FileInputStream(""));
+            //Scanner in = new Scanner(new FileInputStream("C:\\Users\\timot\\Downloads\\Payment\\0.txt"));
             
             while (true){
 
@@ -68,8 +68,8 @@ public class Payment {
                 
             
             
-        // catch (FileNotFoundException e) {
-        //    System.out.println("File not found");
+         //catch (FileNotFoundException e) {
+         //   System.out.println("File not found");
         //}
     //}
 
