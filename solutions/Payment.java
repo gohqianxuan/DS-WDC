@@ -143,6 +143,9 @@ class Queue {
     }
 
     public void enqueue(TransactionDetail elements){
+        if(elements == null) return;
+
+        
         if (priorityList.size() == 0 ){
             priorityList.add(0,elements);;
         }else {
@@ -163,11 +166,6 @@ class Queue {
         return priorityList.size();
     }
 
-    //public ArrayList<TransactionDetail> sort(){
-    //    MergeSort sort = new MergeSort(priorityList);
-    //    sort.divideArrayElements(0, priorityList.size()-1);
-    //    return sort.getArrayAfterSorting();
-    //}
     public TransactionDetail dequeue(){
         if (priorityList.isEmpty()) return null;
         return priorityList.remove(0);
