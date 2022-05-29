@@ -21,7 +21,7 @@ public class Payment {
 
                 Scanner in = new Scanner(System.in);
                 String data = in.nextLine();
-                if (data.equals("EXIT") || data.length() < 15){
+                if (data.equals("EXIT")){
                     break;
                 }else if (data.equals("REBOOT")){
                     queue.clear();
