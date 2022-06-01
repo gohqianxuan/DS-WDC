@@ -21,7 +21,7 @@ public class Payment {
             transaction = in.nextLine();
             if (transaction.equals("EXIT")) {
                 break;
-            }else if(transaction.equals("REBOOT"){
+            }else if(transaction.equals("REBOOT")){
                 q.clear();
             }
             details = transaction.split(" ");
