@@ -17,6 +17,7 @@ public class Payment {
             else if (data.equals("REBOOT")){
                 queue.clear(); 
                 idlist.clear();
+                timelist.clear();
             }                   
             else{
                 Long time = Long.parseLong(data.substring(0, 13));
