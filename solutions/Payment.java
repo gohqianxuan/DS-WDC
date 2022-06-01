@@ -1,5 +1,3 @@
-
-
 import java.util.Scanner;
 import java.util.PriorityQueue;
 public class Payment {
@@ -8,20 +6,16 @@ public class Payment {
         PriorityQueue<Transaction> q = new PriorityQueue<>();
         String transaction;
         String[] details;
-        long timer;
-        String id;
-        String tier;
-        int digit1=0;
-        long timer1;
-        int digit2;
-        long timer2;
-        int digit3=0;
+        long timer, timer1 , timer2;
+        String id, tier;
+        int digit1=0 , digit3 = 0,digit2;
+        
         Scanner in = new Scanner(System.in);
         while (true) {
             transaction = in.nextLine();
             if (transaction.equals("EXIT")) {
                 break;
-            }else if(transaction.equals("END")){
+            }else if(transaction.equals("REBOOT")){
                 q.clear();
             }
             details = transaction.split(" ");
@@ -94,7 +88,7 @@ class Transaction implements Comparable<Transaction>  {
         case "SILVER":
             return stime = timer - 1000;
         case "BRONZE":
-            return stime = timer - 0;
+            return stime = timer;
         default:
             break;
         }
