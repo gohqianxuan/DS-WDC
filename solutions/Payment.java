@@ -27,7 +27,7 @@ public class Payment {
                 idlist.add(id);
                 timelist.add(time);
                 if(queue.size()!=1 && time(timelist.get(0), time)){
-                    if(queue.size()<3){
+                    if(queue.size()<100){
                         for(int i=0; i<idlist.size();i++){
                             System.out.print(idlist.get(i)+ " ");
                         }
@@ -37,7 +37,7 @@ public class Payment {
                     }
                     else{
                         timelist.clear();
-                        for(int i=0; i<3;i++){
+                        for(int i=0; i<100;i++){
                             idlist.remove(queue.peek().id);
                             System.out.print(queue.poll().id + " ");
                         }
