@@ -1,9 +1,7 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Histogram {
+public class Histogram8 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numCase = scanner.nextInt();
@@ -13,17 +11,17 @@ public class Histogram {
             int bin = scanner.nextInt();
             int temp;
                 
-            List<Integer> histArr = new ArrayList<>();
+            int[] histArr = new int[histogramSize];
             int[] cutoffs = new int[bin+1];
             int[] counts = new int[bin];
                 
             for (int j = 0; j < histogramSize; j++) 
-                histArr.add(scanner.nextInt());
+                histArr[j] = scanner.nextInt();
                 
-            int min = Collections.min(histArr);
-            int max = Collections.max(histArr);
+            Arrays.sort(histArr);
+            int min = histArr[0];
+            int max = histArr[histogramSize-1];
             int increment = (max - min) / bin;
-                
             temp = min;
             int counter = 0;
             while (temp <= max) {
@@ -31,14 +29,13 @@ public class Histogram {
                 temp += increment;
                 counter++;
                 }
-                
-            Collections.sort(histArr);
+            
             temp = 1;
             int nextBin = cutoffs[temp];
             counter = 0;
                 
             for (int j = 0; j < histogramSize; j++) {
-                if (histArr.get(j) < nextBin)
+                if (histArr[j] < nextBin)
                     counter++;
                 else {
                     temp++;
