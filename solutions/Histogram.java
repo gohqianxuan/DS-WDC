@@ -49,12 +49,14 @@ public class Histogram {
                     nextBin = cutoffs[temp];
                 }
             }
-
-            for (Integer each : cutoffs) 
+            
+            //print cutoffs
+            for (int each : cutoffs) 
                 System.out.print(each + " ");
             System.out.println();
-                
-            for (Integer each : counts) 
+            
+            //print counts
+            for (int each : counts) 
                 System.out.print(each + " ");
             System.out.println();
         }
