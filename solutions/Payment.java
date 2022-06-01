@@ -17,7 +17,7 @@ public class Payment {
 //        try {
             //Scanner in = new Scanner(new FileInputStream("C:\\Users\\timot\\Downloads\\Payment\\meow.txt"));
             Scanner in = new Scanner(System.in);
-            while(in.hasNextLine()){
+            while(true){
 
                 
                 String data = in.nextLine();
@@ -31,11 +31,11 @@ public class Payment {
                         timer1 = queue.get(0).getEpochtime();
                         index1 = (int) (timer1 % 10000 / 1000); 
                     }
-        
-                    queue.enqueue(processData(data));
+                    TransactionDetail transaction = processData(data);
+                    queue.enqueue(transaction);
                     //System.out.println(time + " " + id + " " + tier);
                     //check time change
-                    timer2 = processData(data).getEpochtime();
+                    timer2 = transaction.getEpochtime();
                     index2 = (int) (timer2 % 10000 /1000);
 
                     while(queue.getSize() ==1){
