@@ -9,7 +9,7 @@ public class Payment {
         long timer, timer1 , timer2;
         String id, tier;
         int digit1=0 , digit3 = 0,digit2;
-        
+
         Scanner in = new Scanner(System.in);
         while (true) {
             transaction = in.nextLine();
@@ -17,35 +17,37 @@ public class Payment {
                 break;
             }else if(transaction.equals("REBOOT")){
                 q.clear();
-            }
-            details = transaction.split(" ");
-            timer = Long.parseLong(details[0]);
-            id = details[1];
-            tier = details[2];
-            Transaction t1 = new Transaction(timer, id, tier);
-            if(q.peek()!=null && digit3<digit1){
-                timer1 = q.peek().getTimer();
-                digit1 = (int) (timer1 % 10000 / 1000); 
-            }
-            q.offer(new Transaction(timer, id, tier));
-            timer2 = t1.getTimer();
-            digit2 = (int) (timer2 % 10000 / 1000);
-            while(q.size()==1){
-                timer1 = timer2;
-                digit1 = (int) (timer1 % 10000 / 1000); 
-                break;
-            } 
-            if(digit2 > digit1){
-                for(int i=0;i<100;i++){
-                    if(!q.isEmpty()){
-                        Transaction t = q.poll();
-                        System.out.print(t + " ");
+            }else {
+                details = transaction.split(" ");
+                timer = Long.parseLong(details[0]);
+                id = details[1];
+                tier = details[2];
+                Transaction t1 = new Transaction(timer, id, tier);
+                if(q.peek()!=null && digit3<digit1){
+                    timer1 = q.peek().getTimer();
+                    digit1 = (int) (timer1 % 10000 / 1000); 
                 }
+                q.offer(new Transaction(timer, id, tier));
+                timer2 = t1.getTimer();
+                digit2 = (int) (timer2 % 10000 / 1000);
+                while(q.size()==1){
+                    timer1 = timer2;
+                    digit1 = (int) (timer1 % 10000 / 1000); 
+                    break;
+                } 
+                if(digit2 > digit1){
+                    for(int i=0;i<100;i++){
+                        if(!q.isEmpty()){
+                            Transaction t = q.poll();
+                            System.out.print(t + " ");
+                    }
                 }
-                        System.out.println();
+                    System.out.println();
             
             }
             digit1 = digit3 = digit2;
+            }
+            
        
             
 
