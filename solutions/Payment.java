@@ -20,7 +20,7 @@ public class Payment {
             }                   
             else{
                 Long time = Long.parseLong(data.substring(0, 13));
-                String id = data.substring(14, 16);
+                String id = data.substring(14, 46);
                 String tier = data.substring(47);
                 Transaction tran = new Transaction(time, id , tier);
                 queue.add(tran);
