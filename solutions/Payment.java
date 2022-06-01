@@ -28,8 +28,12 @@ public class Payment {
                 timelist.add(time);
                 if(queue.size()!=1 && time(timelist.get(0), time)){
                     if(queue.size()<100){
-                        for(int i=0; i<idlist.size();i++){
-                            System.out.print(idlist.get(i)+ " ");
+                        int size = idlist.size();
+                        for(int i=0; i<size;i++){
+                            if(i==size-1)
+                                System.out.println(idlist.get(i));
+                            else
+                                System.out.print(idlist.get(i)+ " ");
                         }
                         idlist.clear();
                         queue.clear();
@@ -39,7 +43,10 @@ public class Payment {
                         timelist.clear();
                         for(int i=0; i<100;i++){
                             idlist.remove(queue.peek().id);
-                            System.out.print(queue.poll().id + " ");
+                            if(i==99)
+                                System.out.println(queue.poll().id );
+                            else
+                                System.out.print(queue.poll().id + " ");
                         }
                     }   
                 }
