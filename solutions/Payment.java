@@ -11,8 +11,9 @@ public class Payment {
         int digit1=0 , digit3 = 0,digit2;
 
         Scanner in = new Scanner(System.in);
-        while (true) {
-            transaction = in.nextLine();
+        transaction = in.nextLine();
+        while (transaction != null) {
+            
             if (transaction.equals("EXIT")) {
                 break;
             }else if(transaction.equals("REBOOT")){
