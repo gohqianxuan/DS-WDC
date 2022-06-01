@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.PriorityQueue;
-
+import java.util.InputMismatchException;
 public class Payment {
 
     public static void main(String[] args) {
@@ -13,42 +13,47 @@ public class Payment {
 
         Scanner in = new Scanner(System.in);
 
-        while (true) {
-            transaction = in.nextLine();
-            if (transaction.equals("EXIT")) {
-                System.exit(0);
-            } else if (transaction.equals("REBOOT")) {
-                q.clear();
-            } else {
-                details = transaction.split(" ");
-                timer = Long.parseLong(details[0]);
-                id = details[1];
-                tier = details[2];
-                Transaction t1 = new Transaction(timer, id, tier);
-                if (q.peek() != null && digit3 < digit1) {
-                    timer1 = q.peek().getTimer();
-                    digit1 = (int) (timer1 % 10000 / 1000);
-                }
-                q.offer(new Transaction(timer, id, tier));
-                timer2 = t1.getTimer();
-                digit2 = (int) (timer2 % 10000 / 1000);
-                while (q.size() == 1) {
-                    timer1 = timer2;
-                    digit1 = (int) (timer1 % 10000 / 1000);
+        while (in.hasNextLine()) {
+            try {
+                transaction = in.nextLine();
+                if (transaction.equals("EXIT")) {
                     break;
-                }
-                if (digit2 > digit1) {
-                    for (int i = 0; i < 100; i++) {
-                        if (!q.isEmpty()) {
-                            Transaction t = q.poll();
-                            System.out.print(t + " ");
-                        }
+                } else if (transaction.equals("REBOOT")) {
+                    q.clear();
+                }else {
+                    details = transaction.split(" ");
+                    timer = Long.parseLong(details[0]);
+                    id = details[1];
+                    tier = details[2];
+                    Transaction t1 = new Transaction(timer, id, tier);
+                    if (q.peek() != null && digit3 < digit1) {
+                        timer1 = q.peek().getTimer();
+                        digit1 = (int) (timer1 % 10000 / 1000);
                     }
-                    System.out.println();
-
+                    q.offer(new Transaction(timer, id, tier));
+                    timer2 = t1.getTimer();
+                    digit2 = (int) (timer2 % 10000 / 1000);
+                    while (q.size() == 1) {
+                        timer1 = timer2;
+                        digit1 = (int) (timer1 % 10000 / 1000);
+                        break;
+                    }
+                    if (digit2 > digit1) {
+                        for (int i = 0; i < 100; i++) {
+                            if (!q.isEmpty()) {
+                                Transaction t = q.poll();
+                                System.out.print(t + " ");
+                            }
+                        }
+                        System.out.println();
+    
+                    }
+                    digit1 = digit3 = digit2;
                 }
-                digit1 = digit3 = digit2;
+            } catch (InputMismatchException e) {
+                return;
             }
+
         }
     }
 
