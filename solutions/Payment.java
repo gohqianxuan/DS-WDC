@@ -28,7 +28,7 @@ public class Payment {
                 idlist.add(id);
                 timelist.add(time);
                 if(queue.size()!=1 && time(timelist.get(0), time)){
-                    if(queue.size()<100){
+                    if(queue.size()<=100){
                         int size = idlist.size();
                         for(int i=0; i<size;i++){
                             if(i==size-1)
