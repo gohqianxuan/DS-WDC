@@ -4,9 +4,12 @@ import java.util.Scanner;
 public class Histogram {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        //input number of test case
         int numCase = scanner.nextInt();
 
         for (int i = 0; i < numCase; i++) {
+            
+            //input histogram size and bin
             int histogramSize = scanner.nextInt();
             int bin = scanner.nextInt();
             int temp;
@@ -14,10 +17,12 @@ public class Histogram {
             int[] histArr = new int[histogramSize];
             int[] cutoffs = new int[bin+1];
             int[] counts = new int[bin];
-                
+            
+            //input data point(s)
             for (int j = 0; j < histogramSize; j++) 
                 histArr[j] = scanner.nextInt();
-                
+            
+            //find required data
             Arrays.sort(histArr);
             int min = histArr[0];
             int max = histArr[histogramSize-1];
