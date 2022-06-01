@@ -13,7 +13,7 @@ public class Payment {
 
         Scanner in = new Scanner(System.in);
 
-        //while (true) {
+        while (true) {
             transaction = in.nextLine();
             if (transaction.equals("EXIT")) {
                 System.exit(0);
@@ -49,7 +49,7 @@ public class Payment {
                 }
                 digit1 = digit3 = digit2;
             }
-        //}
+        }
     }
 
 }
