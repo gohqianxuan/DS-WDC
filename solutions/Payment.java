@@ -14,7 +14,7 @@ public class Payment {
         Scanner in = new Scanner(System.in);
 
         while (in.hasNextLine()) {
-            try {
+            
                 transaction = in.nextLine();
                 if (transaction.equals("EXIT")) {
                     break;
@@ -50,9 +50,7 @@ public class Payment {
                     }
                     digit1 = digit3 = digit2;
                 }
-            } catch (InputMismatchException e) {
-                return;
-            }
+            } 
 
         }
     }
