@@ -1,14 +1,15 @@
 import java.util.*;
 
 public class Payment {
+    
+    static PriorityQueue<Transactions> q = new PriorityQueue<>();
+    static String transaction;
+    static String[] details;
+    static long timer, timer1, timer2;
+    static String id, tier;
+    static int digit1 = 0, digit3 = 0, digit2 = 0 ;
 
     public static void main(String[] args) {
-        PriorityQueue<Transactions> q = new PriorityQueue<>();
-        String transaction;
-        String[] details;
-        long timer, timer1, timer2;
-        String id, tier;
-        int digit1 = 0, digit3 = 0, digit2 = 0;
 
         Scanner in = new Scanner(System.in);
     
