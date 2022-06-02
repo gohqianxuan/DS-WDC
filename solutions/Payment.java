@@ -31,10 +31,12 @@ public class Payment {
                     }
                     q.offer(new Transactions(timer, id, tier));
                     timer2 = t1.getTimer();
-                    if (timer2 % 10000 == 0){
+                    if (timer2 % 10000 == 0000){
                         digit2 = 0;
+                    }else {
+                        digit2 = (int) (timer2 % 10000 / 1000);
                     }
-                    digit2 = (int) (timer2 % 10000 / 1000);
+                    
                     
                     
                     while (q.size() == 1) {
