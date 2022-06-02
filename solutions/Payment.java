@@ -34,7 +34,7 @@ public class Payment {
                     
                     timer2 = t1.getTimer();
                     if (timer2 % 10000 == 0){
-                        digit2 = 0;
+                        digit2 = 9;
               
                     }else {
                         digit2 = (int) (timer2 % 10000 / 1000);
