@@ -42,7 +42,7 @@ public class Payment {
                     if(index2 > index1){
                         queue.mergeSort();
                         for (int x = 0 ; x < 100 ; x++){
-                            System.out.println(queue.dequeue().toString());                            
+                            System.out.print(queue.dequeue().toString() + " ");                            
                         }
                         System.out.println();
                     }
