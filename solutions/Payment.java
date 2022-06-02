@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.PriorityQueue;
 
 
-public class Payment {
+public class Payment1 {
 
     public static void main(String[] args) {
         PriorityQueue<Transaction> q = new PriorityQueue<>();
@@ -30,15 +30,14 @@ public class Payment {
                     q.offer(new Transaction(timer, id, tier));
                     
                     
-                    if (q.peek() != null && digit3 < digit1) {
-                        timer1 = q.peek().getTimer();
-                        digit1 = (int) (timer1 % 10000 / 1000);
-                    }
+                    //if (q.peek() != null && digit3 < digit1) {
+                    //    timer1 = q.peek().getTimer();
+                    //    digit1 = (int) (timer1 % 10000 / 1000);
+                    //}
                     
                     timer2 = t1.getTimer();
                     if (timer2 % 10000 == 0){
                         digit2 = 0;
-                        break;
                     }else {
                         digit2 = (int) (timer2 % 10000 / 1000);
                     }
@@ -48,16 +47,16 @@ public class Payment {
                     }
 
                     if (digit2 > digit1) {
+                        digit1 = digit2;
                         for (int i = 0; i < 100; i++) {
                             if (!q.isEmpty()) {
                                 Transaction t = q.poll();
                                 System.out.print(t + " ");
                             }
                         }
-                        System.out.println();
-    
+                        System.out.println();    
                     }
-                    digit1 = digit3 = digit2;
+                    //digit1 = digit3 = digit2;
                 }
             }
         }
