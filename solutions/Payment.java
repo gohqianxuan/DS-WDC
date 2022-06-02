@@ -32,7 +32,7 @@ public class Payment {
 
                 timer2 = t1.getEpochtime();
                 if (timer2 % 1000 == 0) {
-                    digit2 = 10 ;
+                    digit2 = digit1;
 
                 } else {
                     digit2 = (int) (timer2 % 10000 / 1000);
