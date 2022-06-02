@@ -34,9 +34,8 @@ public class Payment {
                     
                     timer2 = t1.getTimer();
                     if (timer2 % 10000 == 0){
-                        digit2 = 10;
-                        continue;
-                        
+                        digit2 = 0;
+              
                     }else {
                         digit2 = (int) (timer2 % 10000 / 1000);
                     }
@@ -45,7 +44,7 @@ public class Payment {
                         digit1 = digit2;
                     }
 
-                    if (digit2 > digit1) {
+                    if (digit2 != digit1) {
                         digit1 = digit2;
                         for (int i = 0; i < 100; i++) {
                             if (!q.isEmpty()) {
