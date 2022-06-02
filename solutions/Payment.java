@@ -15,7 +15,7 @@ public class Payment {
         Scanner in = new Scanner(System.in);
         String[] details;
 
-        while (true) {
+        while (in.hasNextLine()) {
             String data = in.nextLine();
             if (data.equals("EXIT")) {
                 break;
