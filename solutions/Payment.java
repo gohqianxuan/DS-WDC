@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Payment1 {
+public class Payment {
 
     static boolean flag = true;
     static int index1st = 0;
