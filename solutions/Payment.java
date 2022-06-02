@@ -45,7 +45,7 @@ public class Payment {
                         digit1 = (int) (timer1 % 10000 / 1000);
                         break;
                     }
-                    if (digit2 > digit1 || counter = 1) {
+                    if (digit2 > digit1 || counter >= 1) {
                         for (int i = 0; i < 100; i++) {
                             if (!q.isEmpty()) {
                                 Transactions t = q.poll();
