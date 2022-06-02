@@ -8,7 +8,7 @@ public class Payment {
         String[] details;
         long timer, timer1, timer2;
         String id, tier;
-        int digit1 = 0, digit3 = 0, digit2 = 0 , counter = 0;
+        int digit1 = 0, digit3 = 0, digit2 = 0;
 
         Scanner in = new Scanner(System.in);
     
@@ -32,7 +32,6 @@ public class Payment {
                     q.offer(new Transactions(timer, id, tier));
                     timer2 = t1.getTimer();
                     if (timer2 % 10000 == 0){
-                        counter = 1;
                         break;
                     }else {
                         digit2 = (int) (timer2 % 10000 / 1000);
@@ -45,14 +44,13 @@ public class Payment {
                         digit1 = (int) (timer1 % 10000 / 1000);
                         break;
                     }
-                    if (digit2 > digit1 || counter >= 1) {
+                    if (digit2 > digit1) {
                         for (int i = 0; i < 100; i++) {
                             if (!q.isEmpty()) {
                                 Transactions t = q.poll();
                                 System.out.print(t + " ");
                             }
                         }
-                        counter = 0;
                         System.out.println();
     
                     }
