@@ -31,8 +31,8 @@ public class Payment {
                 queue.enqueue(t1);
 
                 timer2 = t1.getEpochtime();
-                if (timer2 % 1000 == 0) {
-                    digit2 = digit1 -1 ;
+                if (timer2 % 10000 == 0) {
+                    digit2 = 9 ;
 
                 } else {
                     digit2 = (int) (timer2 % 10000 / 1000);
