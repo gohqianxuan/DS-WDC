@@ -1,17 +1,17 @@
 import java.util.*;
 
-public class Payment {
+public class Payment1 {
 
     public static void main(String[] args) {
-        PriorityQueue<Transaction> q = new PriorityQueue<>();
+        PriorityQueue<Transactions> q = new PriorityQueue<>();
         String transaction;
         String[] details;
         long timer, timer1, timer2;
         String id, tier;
-        int digit1 = 0, digit3 = 0, digit2;
+        int digit1 = 0, digit3 = 0, digit2 = 0 , counter = 0;
 
         Scanner in = new Scanner(System.in);
-        
+    
         while (in.hasNextLine()) {
             
                 transaction = in.nextLine();
@@ -24,14 +24,17 @@ public class Payment {
                     timer = Long.parseLong(details[0]);
                     id = details[1];
                     tier = details[2];
-                    Transaction t1 = new Transaction(timer, id, tier);
+                    Transactions t1 = new Transactions(timer, id, tier);
                     if (q.peek() != null && digit3 < digit1) {
                         timer1 = q.peek().getTimer();
                         digit1 = (int) (timer1 % 10000 / 1000);
                     }
-                    q.offer(new Transaction(timer, id, tier));
+                    q.offer(new Transactions(timer, id, tier));
                     timer2 = t1.getTimer();
-                    digit2 = (int) (timer2 % 10000 / 1000);
+                    if (timer2 % 10000 != 0){
+                        digit2 = (int) (timer2 % 10000 / 1000);
+                    }
+                    
                     while (q.size() == 1) {
                         timer1 = timer2;
                         digit1 = (int) (timer1 % 10000 / 1000);
@@ -40,7 +43,7 @@ public class Payment {
                     if (digit2 > digit1) {
                         for (int i = 0; i < 100; i++) {
                             if (!q.isEmpty()) {
-                                Transaction t = q.poll();
+                                Transactions t = q.poll();
                                 System.out.print(t + " ");
                             }
                         }
@@ -56,13 +59,13 @@ public class Payment {
         }
     
 
-class Transaction implements Comparable<Transaction> {
+class Transactions implements Comparable<Transactions> {
     long timer;
     String id;
     String tier;
     Long stime;
 
-    public Transaction(long timer, String id, String tier) {
+    public Transactions(long timer, String id, String tier) {
         this.timer = timer;
         this.id = id;
         this.tier = tier;
@@ -97,7 +100,7 @@ class Transaction implements Comparable<Transaction> {
     }
 
     @Override
-    public int compareTo(Transaction o1) {
+    public int compareTo(Transactions o1) {
         return this.getStartingTime().compareTo(o1.getStartingTime());
     }
 
