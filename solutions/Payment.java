@@ -10,7 +10,7 @@ public class Payment {
         String[] details;
         long timer, timer1, timer2;
         String id, tier;
-        int digit1 = 0, digit3 = 0, digit2;
+        int digit1 = 0, digit2;
 
         Scanner in = new Scanner(System.in);
 
@@ -30,14 +30,12 @@ public class Payment {
                     q.offer(new Transaction(timer, id, tier));
                     
                     
-                    //if (q.peek() != null && digit3 < digit1) {
-                    //    timer1 = q.peek().getTimer();
-                    //    digit1 = (int) (timer1 % 10000 / 1000);
-                    //}
+                    
                     
                     timer2 = t1.getTimer();
                     if (timer2 % 10000 == 0){
                         digit2 = 0;
+                        
                     }else {
                         digit2 = (int) (timer2 % 10000 / 1000);
                     }
@@ -56,7 +54,7 @@ public class Payment {
                         }
                         System.out.println();    
                     }
-                    //digit1 = digit3 = digit2;
+                    
                 }
             }
         }
