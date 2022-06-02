@@ -1,76 +1,68 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.PriorityQueue;
 
-public class Payment {
 
-    
+public class Payment1 {
+
     public static void main(String[] args) {
-        PriorityQueue<Transactions> q = new PriorityQueue<>();
+        PriorityQueue<Transaction> q = new PriorityQueue<>();
         String transaction;
         String[] details;
-        long timer;
-        String id;
-        String tier;
-        int digit1=0;
-        long timer1;
-        int digit2;
-        long timer2;
-        int digit3=0;
+        long timer, timer1, timer2;
+        String id, tier;
+        int digit1 = 0, digit3 = 0, digit2;
+
         Scanner in = new Scanner(System.in);
 
-        while (true) {
+        while (in.hasNextLine()) {
             
-            transaction = in.nextLine();
-            if (transaction.equals("EXIT")) {
-                break;
-            }else if(transaction.equals("REBOOT")){
-                q.clear();
-                break;
-            }
-            details = transaction.split(" ");
-            timer = Long.parseLong(details[0]);
-            id = details[1];
-            tier = details[2];
-            Transactions t1 = new Transactions(timer, id, tier);
-            q.offer(new Transactions(timer, id, tier));
-            if(q.peek()!=null && digit3<digit1){
-                timer1 = q.peek().getTimer();
-                digit1 = (int) (timer1 % 10000 / 1000); 
-            }
-            
-            timer2 = t1.getTimer();
-            digit2 = (int) (timer2 % 10000 / 1000);
-            while(q.size()==1){
-                timer1 = timer2;
-                digit1 = (int) (timer1 % 10000 / 1000); 
-                break;
-            } 
-            if(digit2 > digit1){
-                for(int i=0;i<100;i++){
-                    if(!q.isEmpty()){
-                        Transactions t = q.poll();
-                        System.out.print(t + " ");
-                }
-                }
+                transaction = in.nextLine();
+                if (transaction.equals("EXIT")) {
+                    break;
+                } else if (transaction.equals("REBOOT")) {
+                    q.clear();
+                }else {
+                    details = transaction.split(" ");
+                    timer = Long.parseLong(details[0]);
+                    id = details[1];
+                    tier = details[2];
+                    Transaction t1 = new Transaction(timer, id, tier);
+                    if (q.peek() != null && digit3 < digit1) {
+                        timer1 = q.peek().getTimer();
+                        digit1 = (int) (timer1 % 10000 / 1000);
+                    }
+                    q.offer(new Transaction(timer, id, tier));
+                    timer2 = t1.getTimer();
+                    digit2 = (int) (timer2 % 10000 / 1000);
+                    while (q.size() == 1) {
+                        timer1 = timer2;
+                        digit1 = (int) (timer1 % 10000 / 1000);
+                        break;
+                    }
+                    if (digit2 > digit1) {
+                        for (int i = 0; i < 100; i++) {
+                            if (!q.isEmpty()) {
+                                Transaction t = q.poll();
+                                System.out.print(t + " ");
+                            }
+                        }
                         System.out.println();
-            
+    
+                    }
+                    digit1 = digit3 = digit2;
+                }
             }
-            digit1 = digit3 = digit2;
-       
-            
-
         }
 
-
-    }
 }
 
-class Transactions implements Comparable<Transactions> {
+class Transaction implements Comparable<Transaction> {
     long timer;
     String id;
     String tier;
     Long stime;
 
-    public Transactions(long timer, String id, String tier) {
+    public Transaction(long timer, String id, String tier) {
         this.timer = timer;
         this.id = id;
         this.tier = tier;
@@ -105,7 +97,7 @@ class Transactions implements Comparable<Transactions> {
     }
 
     @Override
-    public int compareTo(Transactions o1) {
+    public int compareTo(Transaction o1) {
         return this.getStartingTime().compareTo(o1.getStartingTime());
     }
 
