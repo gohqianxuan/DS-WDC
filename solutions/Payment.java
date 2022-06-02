@@ -40,11 +40,19 @@ public class Payment {
                         break;
                     }
                     if(index2 > index1){
-                        queue.mergeSort();
-                        for (int x = 0 ; x < 100 ; x++){
-                            System.out.print(queue.dequeue().toString() + " ");                            
-                        }
-                        System.out.println();
+                        int size = queue.getSize();
+                        if (size < 100){
+                            while(queue.getSize() != 0){
+                                System.out.print(queue.dequeue().toString() + " "); 
+                            }
+                            System.out.println();
+                        }else {
+                            queue.mergeSort();
+                            for (int x = 0 ; x < 100 ; x++){
+                                System.out.print(queue.dequeue().toString() + " ");                            
+                            }
+                            System.out.println();
+                        };
                     }
                     index1 = index3 = index2;
                 }
