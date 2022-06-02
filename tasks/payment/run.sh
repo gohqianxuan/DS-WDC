@@ -1,5 +1,5 @@
 #!/bin/bash
-VERBOSE=true
+VERBOSE=$1
 TIMELIMIT=3s
 SOLUTION_FILE=Payment
 RUNNER_FILE=tasks/payment/run.py
