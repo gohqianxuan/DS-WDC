@@ -14,7 +14,7 @@ public class Payment {
 
         Scanner in = new Scanner(System.in);
 
-        while (in.hasNextLine()) {
+        while (true) {
             
                 transaction = in.nextLine();
                 if (transaction.equals("EXIT")) {
@@ -26,20 +26,27 @@ public class Payment {
                     timer = Long.parseLong(details[0]);
                     id = details[1];
                     tier = details[2];
-                    q.offer(new Transaction(timer, id, tier));
                     Transaction t1 = new Transaction(timer, id, tier);
+                    q.offer(new Transaction(timer, id, tier));
+                    
+                    
                     if (q.peek() != null && digit3 < digit1) {
                         timer1 = q.peek().getTimer();
                         digit1 = (int) (timer1 % 10000 / 1000);
                     }
                     
                     timer2 = t1.getTimer();
-                    digit2 = (int) (timer2 % 10000 / 1000);
-                    while (q.size() == 1) {
-                        timer1 = timer2;
-                        digit1 = (int) (timer1 % 10000 / 1000);
+                    if (timer2 % 10000 == 0){
+                        digit2 = 0;
                         break;
+                    }else {
+                        digit2 = (int) (timer2 % 10000 / 1000);
                     }
+                    
+                    if (q.size() == 1){
+                        digit1 = digit2;
+                    }
+
                     if (digit2 > digit1) {
                         for (int i = 0; i < 100; i++) {
                             if (!q.isEmpty()) {
