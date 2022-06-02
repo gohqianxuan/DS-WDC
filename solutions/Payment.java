@@ -25,14 +25,17 @@ public class Payment {
                     id = details[1];
                     tier = details[2];
                     Transactions t1 = new Transactions(timer, id, tier);
-                    if (q.peek() != null && digit3 < digit1) {
-                        timer1 = q.peek().getTimer();
-                        digit1 = (int) (timer1 % 10000 / 1000);
-                    }
+                    
                     q.offer(new Transactions(timer, id, tier));
                     if (t1.getTimer() % 10000 == 0 ){
                         break;
                     }
+                    
+                    if (q.peek() != null && digit3 < digit1) {
+                        timer1 = q.peek().getTimer();
+                        digit1 = (int) (timer1 % 10000 / 1000);
+                    }
+                    
                         
                     timer2 = t1.getTimer();
                
