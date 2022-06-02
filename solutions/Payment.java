@@ -44,15 +44,23 @@ public class Payment {
 
                 if (digit2 != digit1) {
                     digit1 = digit2;
-                    
-                    queue.mergeSort();
-                    for (int x = 0; x < 100; x++) {
-                        if (!queue.isEmpty()){
+                    int size = queue.getSize();
+                    if (size < 100){                        
+                        while (!queue.isEmpty()){
                             System.out.print(queue.dequeue().toString() + " ");
                         }
+                        System.out.println();
+                    }else {
+                        queue.mergeSort();
+                        for (int x = 0; x < 100; x++) {
+                            if (!queue.isEmpty()){
+                                System.out.print(queue.dequeue().toString() + " ");
+                            }
                         
+                        }
+                        System.out.println();
                     }
-                    System.out.println();
+                   
                 }
 
             }
