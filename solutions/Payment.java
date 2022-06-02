@@ -26,12 +26,13 @@ public class Payment {
                     timer = Long.parseLong(details[0]);
                     id = details[1];
                     tier = details[2];
+                    q.offer(new Transaction(timer, id, tier));
                     Transaction t1 = new Transaction(timer, id, tier);
                     if (q.peek() != null && digit3 < digit1) {
                         timer1 = q.peek().getTimer();
                         digit1 = (int) (timer1 % 10000 / 1000);
                     }
-                    q.offer(new Transaction(timer, id, tier));
+                    
                     timer2 = t1.getTimer();
                     digit2 = (int) (timer2 % 10000 / 1000);
                     while (q.size() == 1) {
