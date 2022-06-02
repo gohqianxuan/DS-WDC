@@ -1,122 +1,105 @@
 import java.util.*;
 
+
 public class Payment {
     
-    static PriorityQueue<Transactions> q = new PriorityQueue<>();
-    static String transaction;
-    static String[] details;
-    static long timer, timer1, timer2;
-    static String id, tier;
-    static int digit1 = 0, digit3 = 0, digit2 = 0 ;
-
-    public static void main(String[] args) {
-
-        Scanner in = new Scanner(System.in);
-    
-        while (in.hasNextLine()) {
-            
-                transaction = in.nextLine();
-                if (transaction.equals("EXIT")) {
-                    break;
-                } else if (transaction.equals("REBOOT")) {
-                    q.clear();
-                }else {
-                    details = transaction.split(" ");
-                    timer = Long.parseLong(details[0]);
-                    id = details[1];
-                    tier = details[2];
-                    Transactions t1 = new Transactions(timer, id, tier);
-                    
-                    q.offer(new Transactions(timer, id, tier));
-                    if (t1.getTimer() % 10000 == 0 ){
-                        break;
-                    }
-                    
-                    if (q.peek() != null && digit3 < digit1) {
-                        timer1 = q.peek().getTimer();
-                        digit1 = (int) (timer1 % 10000 / 1000);
-                    }
-                    
-                        
-                    timer2 = t1.getTimer();
-               
-                    digit2 = (int) (timer2 % 10000 / 1000);
-                    
-                    
-                    
-                    
-                    while (q.size() == 1) {
-                        timer1 = timer2;
-                        digit1 = (int) (timer1 % 10000 / 1000);
-                        break;
-                    }
-                    if (digit2 > digit1) {
-                        for (int i = 0; i < 100; i++) {
-                            if (!q.isEmpty()) {
-                                Transactions t = q.poll();
-                                System.out.print(t + " ");
-                            }
-                        }
-                        System.out.println();
-    
-                    }
-                    digit1 = digit3 = digit2;
-                }
-            } 
-                
-            }
-
-        }
-    
-
-class Transactions implements Comparable<Transactions> {
-    long timer;
-    String id;
-    String tier;
-    Long stime;
-
-    public Transactions(long timer, String id, String tier) {
-        this.timer = timer;
-        this.id = id;
-        this.tier = tier;
-    }
-
-    public long getTimer() {
-        return timer;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getTier() {
-        return tier;
-    }
-
-    public Long getStartingTime() {
-        switch (tier) {
-            case "PLATINUM":
-                return stime = timer - 3000;
-            case "GOLD":
-                return stime = timer - 2000;
-            case "SILVER":
-                return stime = timer - 1000;
-            case "BRONZE":
-                return stime = timer;
-            default:
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+        PriorityQueue<Transaction> queue = new PriorityQueue<>();
+        ArrayList<String> idlist = new ArrayList<>();
+        ArrayList<Long> timelist = new ArrayList<>();
+        long timeclone;
+        while(true){
+            String data = sc.nextLine();
+            if (data.equals("EXIT"))
                 break;
+            else if (data.equals("REBOOT")){
+                queue.clear(); 
+                idlist.clear();
+                timelist.clear();
+            }                   
+            else{
+                Long time = Long.parseLong(data.substring(0, 13));
+                String id = data.substring(14, 46);
+                String tier = data.substring(47);
+                Transaction tran = new Transaction(time, id , tier);
+                queue.add(tran);
+                idlist.add(id);
+                timelist.add(time);
+                if(queue.size()!=1 && time(timelist.get(0), time)){
+                    if(queue.size()<=100){
+                        int size = idlist.size();
+                        for(int i=0; i<size;i++){
+                            if(i==size-1)
+                                System.out.println(idlist.get(i));
+                            else
+                                System.out.print(idlist.get(i)+ " ");
+                        }
+                        idlist.clear();
+                        queue.clear();
+                        timelist.clear();
+                    }
+                    else{
+                        timelist.clear();
+                        for(int i=0; i<100;i++){
+                            idlist.remove(queue.peek().id);
+                            if(i==99)
+                                System.out.println(queue.poll().id );
+                            else
+                                System.out.print(queue.poll().id + " ");
+                        }
+                    }   
+                }
+            }
         }
-        return stime;
+        
+        
     }
-
-    @Override
-    public int compareTo(Transactions o1) {
-        return this.getStartingTime().compareTo(o1.getStartingTime());
+    
+    public static boolean time(long time1, long time2){
+        if(time1/1000 != time2/1000)
+            return true;
+        return false;
     }
+    
 
-    @Override
-    public String toString() {
-        return id + " ";
+    static class Transaction implements Comparable<Transaction> {
+        long epoch_time;
+        String id;
+        String tier;
+
+        public void setEpoch_time(long epoch_time) {
+            this.epoch_time = epoch_time;
+        }
+        
+        //long prior_epoch_time;
+
+        public long getEpoch_time() {
+            return epoch_time;
+        }
+                
+        public Transaction(long epoch_time, String id, String tier){
+            //this.epoch_time = epoch_time;
+            this.id = id;
+            this.tier = tier;
+            if(tier.equals("SILVER"))
+                this.epoch_time = epoch_time - 1000;
+            else if(tier.equals("GOLD"))
+                this.epoch_time = epoch_time - 2000;
+            else if(tier.equals("PLATINUM"))
+                this.epoch_time = epoch_time - 3000;
+            else 
+                this.epoch_time = epoch_time;   
+        }
+
+        @Override
+        public int compareTo(Transaction o) {
+            if (this.getEpoch_time() >= o.getEpoch_time())
+                return 1;
+            else if (this.getEpoch_time() == o.getEpoch_time())
+                return 0;
+            else
+                return -1;
+        }
     }
-
 }
