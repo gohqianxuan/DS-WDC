@@ -24,6 +24,7 @@ public class Payment {
                 break;
             }else if(transaction.equals("REBOOT")){
                 q.clear();
+                break;
             }
             details = transaction.split(" ");
             timer = Long.parseLong(details[0]);
