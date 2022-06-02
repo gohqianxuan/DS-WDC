@@ -1,105 +1,119 @@
 import java.util.*;
 
+public class Payment1 {
 
-public class Payment {
-    
-    public static void main (String[] args){
-        Scanner sc = new Scanner(System.in);
-        PriorityQueue<Transaction> queue = new PriorityQueue<>();
-        ArrayList<String> idlist = new ArrayList<>();
-        ArrayList<Long> timelist = new ArrayList<>();
-        long timeclone;
-        while(true){
-            String data = sc.nextLine();
-            if (data.equals("EXIT"))
+    static boolean flag = true;
+    static int index1st = 0;
+    // static int checkTimeChange;
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        PriorityQueue<Transactions> queue = new PriorityQueue<>();
+        String[] inputDetails;
+        long time;
+        String transID, transTier, input;
+        
+        while (true) {
+            input = in.nextLine();
+
+            if (input.equals("EXIT")) {
                 break;
-            else if (data.equals("REBOOT")){
-                queue.clear(); 
-                idlist.clear();
-                timelist.clear();
-            }                   
-            else{
-                Long time = Long.parseLong(data.substring(0, 13));
-                String id = data.substring(14, 46);
-                String tier = data.substring(47);
-                Transaction tran = new Transaction(time, id , tier);
-                queue.add(tran);
-                idlist.add(id);
-                timelist.add(time);
-                if(queue.size()!=1 && time(timelist.get(0), time)){
-                    if(queue.size()<=100){
-                        int size = idlist.size();
-                        for(int i=0; i<size;i++){
-                            if(i==size-1)
-                                System.out.println(idlist.get(i));
-                            else
-                                System.out.print(idlist.get(i)+ " ");
-                        }
-                        idlist.clear();
-                        queue.clear();
-                        timelist.clear();
+            } else if (input.equals("REBOOT")) {
+                queue.clear();
+                break;
+            }
+
+            // split the data
+            inputDetails = input.split(" ");
+            time = Long.parseLong(inputDetails[0]);
+            transID = inputDetails[1];
+            transTier = inputDetails[2];
+
+            //insert it to queue
+            queue.offer(new Transactions(time, transID, transTier));
+
+            // check time change
+            // if flag is true, meaning that it is the first time entering the queue
+            if (queue.size() == 1) {
+                long timer1st = (queue.peek().getTimer());
+                index1st = (int) (timer1st % 10000 / 1000);
+                break;
+            }
+
+            if (time % 10000 == 0) {
+                break;
+            }
+            int currenttimer = (int) (time % 10000 / 1000);
+
+            if (currenttimer != index1st) {
+                index1st = currenttimer;
+                int size = queue.size();
+                if (size < 100) {
+                    while (queue.size() != 0) {
+                        System.out.print(queue.poll().getId() + " ");
                     }
-                    else{
-                        timelist.clear();
-                        for(int i=0; i<100;i++){
-                            idlist.remove(queue.peek().id);
-                            if(i==99)
-                                System.out.println(queue.poll().id );
-                            else
-                                System.out.print(queue.poll().id + " ");
-                        }
-                    }   
+                    System.out.println();
+                } else {
+                    for (int x = 0; x < 100; x++) {
+                        System.out.print(queue.poll().getId() + " ");
+                    }
+                    System.out.println();
                 }
             }
+
         }
-        
-        
+
     }
-    
-    public static boolean time(long time1, long time2){
-        if(time1/1000 != time2/1000)
-            return true;
-        return false;
+}
+
+class Transactions implements Comparable<Transactions> {
+    long timer;
+    String id;
+    String tier;
+    Long stime;
+
+    public Transactions(long timer, String id, String tier) {
+        this.timer = timer;
+        this.id = id;
+        this.tier = tier;
     }
-    
 
-    static class Transaction implements Comparable<Transaction> {
-        long epoch_time;
-        String id;
-        String tier;
-
-        public void setEpoch_time(long epoch_time) {
-            this.epoch_time = epoch_time;
-        }
-        
-        //long prior_epoch_time;
-
-        public long getEpoch_time() {
-            return epoch_time;
-        }
-                
-        public Transaction(long epoch_time, String id, String tier){
-            //this.epoch_time = epoch_time;
-            this.id = id;
-            this.tier = tier;
-            if(tier.equals("SILVER"))
-                this.epoch_time = epoch_time - 1000;
-            else if(tier.equals("GOLD"))
-                this.epoch_time = epoch_time - 2000;
-            else if(tier.equals("PLATINUM"))
-                this.epoch_time = epoch_time - 3000;
-            else 
-                this.epoch_time = epoch_time;   
-        }
-
-        @Override
-        public int compareTo(Transaction o) {
-            if (this.getEpoch_time() >= o.getEpoch_time())
-                return 1;
-            else if (this.getEpoch_time() == o.getEpoch_time())
-                return 0;
-            else
-                return -1;
-        }
+    public long getTimer() {
+        return timer;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTier() {
+        return tier;
+    }
+
+    public Long getStartingTime() {
+        switch (tier) {
+            case "PLATINUM":
+                return stime = timer - 3000;
+            case "GOLD":
+                return stime = timer - 2000;
+            case "SILVER":
+                return stime = timer - 1000;
+            case "BRONZE":
+                return stime = timer;
+            default:
+                break;
+        }
+        return stime;
+    }
+
+    @Override
+    public int compareTo(Transactions o1) {
+        return this.getStartingTime().compareTo(o1.getStartingTime());
+    }
+
+    @Override
+    public String toString() {
+        return id + " ";
+    }
+
 }
