@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Payment1 {
+public class Payment {
 
     public static void main(String[] args) {
         PriorityQueue<Transactions> q = new PriorityQueue<>();
