@@ -2,66 +2,61 @@ import java.util.*;
 
 public class Payment {
 
-    static boolean flag = true;
-    static int index1st = 0;
-    // static int checkTimeChange;
+    
     public static void main(String[] args) {
+        PriorityQueue<Transactions> q = new PriorityQueue<>();
+        String transaction;
+        String[] details;
+        long timer;
+        String id;
+        String tier;
+        int digit1=0;
+        long timer1;
+        int digit2;
+        long timer2;
+        int digit3=0;
         Scanner in = new Scanner(System.in);
 
-        PriorityQueue<Transactions> queue = new PriorityQueue<>();
-        String[] inputDetails;
-        long time;
-        String transID, transTier, input;
-        
         while (true) {
-            input = in.nextLine();
-
-            if (input.equals("EXIT")) {
-                break;
-            } else if (input.equals("REBOOT")) {
-                queue.clear();
+            
+            transaction = in.nextLine();
+            if (transaction.equals("EXIT")) {
                 break;
             }
-
-            // split the data
-            inputDetails = input.split(" ");
-            time = Long.parseLong(inputDetails[0]);
-            transID = inputDetails[1];
-            transTier = inputDetails[2];
-
-            //insert it to queue
-            queue.offer(new Transactions(time, transID, transTier));
-
-            // check time change
-            // if flag is true, meaning that it is the first time entering the queue
-            if (queue.size() == 1) {
-                long timer1st = (queue.peek().getTimer());
-                index1st = (int) (timer1st % 10000 / 1000);
-                break;
+            details = transaction.split(" ");
+            timer = Long.parseLong(details[0]);
+            id = details[1];
+            tier = details[2];
+            Transactions t1 = new Transactions(timer, id, tier);
+            q.offer(new Transactions(timer, id, tier));
+            if(q.peek()!=null && digit3<digit1){
+                timer1 = q.peek().getTimer();
+                digit1 = (int) (timer1 % 10000 / 1000); 
             }
-
-            if (time % 10000 == 0) {
+            
+            timer2 = t1.getTimer();
+            digit2 = (int) (timer2 % 10000 / 1000);
+            while(q.size()==1){
+                timer1 = timer2;
+                digit1 = (int) (timer1 % 10000 / 1000); 
                 break;
-            }
-            int currenttimer = (int) (time % 10000 / 1000);
-
-            if (currenttimer != index1st) {
-                index1st = currenttimer;
-                int size = queue.size();
-                if (size < 100) {
-                    while (queue.size() != 0) {
-                        System.out.print(queue.poll().getId() + " ");
-                    }
-                    System.out.println();
-                } else {
-                    for (int x = 0; x < 100; x++) {
-                        System.out.print(queue.poll().getId() + " ");
-                    }
-                    System.out.println();
+            } 
+            if(digit2 > digit1){
+                for(int i=0;i<100;i++){
+                    if(!q.isEmpty()){
+                        Transactions t = q.poll();
+                        System.out.print(t + " ");
                 }
+                }
+                        System.out.println();
+            
             }
+            digit1 = digit3 = digit2;
+       
+            
 
         }
+
 
     }
 }
