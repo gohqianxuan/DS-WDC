@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class HelloApplication extends Application {
+public class Histogram extends Application {
 
     int histogramSize = 5071;
     int bin = 10;
