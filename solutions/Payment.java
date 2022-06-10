@@ -11,12 +11,12 @@ public class Payment {
     static Queue queue = new Queue();
 
     public static void main(String[] args) {
-
+        
         Scanner in = new Scanner(System.in);
         String[] details;
-        //prompt for user input
         
         while (in.hasNextLine()) {
+            //prompt for user input
             String data = in.nextLine();
             if (data.equals("EXIT")) {
                 break;
@@ -32,13 +32,11 @@ public class Payment {
                 
                 //put the transaction detail object into queue
                 queue.enqueue(t1);
-
                 
                 //check time change for every 1000ms
                 timer2 = t1.getEpochtime();
                 if (timer2 % 1000 == 0) {
                     digit2 = digit1;
-
                 } else {
                     digit2 = (int) (timer2 % 10000 / 1000);
                 }
@@ -65,24 +63,16 @@ public class Payment {
                             if (!queue.isEmpty()){
                                 System.out.print(queue.dequeue().toString() + " ");
                             }
-                        
                         }
                         System.out.println();
                     }
-                   
                 }
-
             }
         }
-
     }
 }
 
-
-
-
 class MergeSort {
-
     static ArrayList<TransactionDetail> tmp;
 
     public static void mergeSort(ArrayList<TransactionDetail> a,  int left, int right) {
@@ -91,7 +81,7 @@ class MergeSort {
             mergeSort(a,  left, middle); //sort left half
             mergeSort(a,  middle + 1, right); //sort right half
             mergeSortedLists(a,  left, middle, right);
-        } // merge
+        } //merge
     }
 
     public static void mergeSortedLists(ArrayList<TransactionDetail> a,  int left, int middle, int right) {
@@ -100,40 +90,29 @@ class MergeSort {
         int tempRight = middle + 1;
         while (tempLeft <= middle && tempRight <= right)
             if (a.get(tempLeft).getWaitingTime() <= (a.get(tempRight).getWaitingTime())) {
-                
-                    tmp.add(a.get(tempLeft));
-                
+                tmp.add(a.get(tempLeft));
                 tempLeft++;
             } else {
-                
-                    tmp.add(a.get(tempRight));
-                
+                tmp.add(a.get(tempRight));
                 tempRight++;
             }
 
         while (tempLeft <= middle) {
-            
-                tmp.add(a.get(tempLeft));
-            
+            tmp.add(a.get(tempLeft));
             tempLeft++;
         }
 
         while (tempRight <= right) {
-            
-                tmp.add(a.get(tempRight));
-            
+            tmp.add(a.get(tempRight));
             tempRight++;
         }
+        
         int i = left;
-        {
-            for (TransactionDetail value : tmp) {
-                a.set(i, value);
-                i++;
-            }
+        for (TransactionDetail value : tmp) {
+            a.set(i, value);
+            i++;
         }
     }
-    
-
 }
 
 
@@ -147,7 +126,7 @@ class Queue {
     public void enqueue(TransactionDetail elements){
         if (priorityList.size() == 0 ){
             priorityList.add(0,elements);;
-        }else {
+        } else {
             priorityList.add(elements);
         }
     }
@@ -155,8 +134,7 @@ class Queue {
     public void setPriorityList(ArrayList<TransactionDetail> list){
         Collections.copy(priorityList, list);
     }
-
-
+    
     public void clear() {
         priorityList.clear();
     }
@@ -164,6 +142,7 @@ class Queue {
     public int getSize(){
         return priorityList.size();
     }
+    
     public boolean isEmpty(){
         return priorityList.isEmpty();
     }
@@ -179,19 +158,12 @@ class Queue {
         return priorityList.get(index);
     }
 
-
-    public void mergeSort (){
-        
+    public void mergeSort () {
         MergeSort.mergeSort(priorityList, 0, priorityList.size()-1);
     }
-
-    
-    
-
 }
 
 class TransactionDetail {
-
     private long epochTime;
     private String tier;
     private String transactionID;
@@ -204,10 +176,8 @@ class TransactionDetail {
         calculateWaitingTime(time);
     }
 
-
-    //To give the starting time of a transaction in a queue according to tier
+    //to give the starting time of a transaction in a queue according to tier
     public void calculateWaitingTime(long time) {
-
         switch (this.tier) {
             case "PLATINUM":
                 waitingTime = epochTime - 3000 ;
@@ -224,7 +194,6 @@ class TransactionDetail {
         }
 
     }
-
     
     public String getID() {
         return this.transactionID;
@@ -241,5 +210,4 @@ class TransactionDetail {
     public String toString() {
         return transactionID;
     }
-
 }
