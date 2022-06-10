@@ -23,7 +23,7 @@ public class Payment {
             } else if (data.equals("REBOOT")) {
                 queue.clear();
             } else {
-                //seperate data into transactionID , ePochTime and ,tier
+                //seperate data into transactionID , ePochTime and tier
                 details = data.split(" ");
                 time = Long.parseLong(details[0]);
                 id = details[1];
@@ -53,7 +53,7 @@ public class Payment {
                     digit1 = digit2;
                     int size = queue.getSize();
                     if (size < 100){                        
-                        while (!queue.isEmpty()){
+                        while (!queue.isEmpty()) {
                             System.out.print(queue.dequeue().toString() + " ");
                         }
                         System.out.println();
@@ -115,7 +115,6 @@ class MergeSort {
     }
 }
 
-
 class Queue {
     ArrayList<TransactionDetail> priorityList;
 
@@ -124,8 +123,8 @@ class Queue {
     }
 
     public void enqueue(TransactionDetail elements){
-        if (priorityList.size() == 0 ){
-            priorityList.add(0,elements);;
+        if (priorityList.size() == 0 ) {
+            priorityList.add(0,elements);
         } else {
             priorityList.add(elements);
         }
@@ -139,15 +138,15 @@ class Queue {
         priorityList.clear();
     }
 
-    public int getSize(){
+    public int getSize() {
         return priorityList.size();
     }
     
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return priorityList.isEmpty();
     }
 
-    public TransactionDetail dequeue(){
+    public TransactionDetail dequeue() {
         if (priorityList.isEmpty()) return null;
         return priorityList.remove(0);
         
