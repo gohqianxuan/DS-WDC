@@ -14,7 +14,8 @@ public class Payment {
 
         Scanner in = new Scanner(System.in);
         String[] details;
-
+        //prompt for user input
+        
         while (in.hasNextLine()) {
             String data = in.nextLine();
             if (data.equals("EXIT")) {
@@ -22,14 +23,18 @@ public class Payment {
             } else if (data.equals("REBOOT")) {
                 queue.clear();
             } else {
-
+                //seperate data into transactionID , ePochTime and ,tier
                 details = data.split(" ");
                 time = Long.parseLong(details[0]);
                 id = details[1];
                 tier = details[2];
                 TransactionDetail t1 = new TransactionDetail(time, id, tier);
+                
+                //put the transaction detail object into queue
                 queue.enqueue(t1);
 
+                
+                //check time change for every 1000ms
                 timer2 = t1.getEpochtime();
                 if (timer2 % 1000 == 0) {
                     digit2 = digit1;
@@ -41,7 +46,11 @@ public class Payment {
                 if (queue.getSize() == 1) {
                     digit1 = digit2;
                 }
-
+                
+                //if there is a time change detected
+                //check the size of queue
+                //size > 100 ,sort queue first
+                //size < 100 , dequeue without sorting
                 if (digit2 != digit1) {
                     digit1 = digit2;
                     int size = queue.getSize();
@@ -91,28 +100,28 @@ class MergeSort {
         int tempRight = middle + 1;
         while (tempLeft <= middle && tempRight <= right)
             if (a.get(tempLeft).getWaitingTime() <= (a.get(tempRight).getWaitingTime())) {
-                {
+                
                     tmp.add(a.get(tempLeft));
-                }
+                
                 tempLeft++;
             } else {
-                {
+                
                     tmp.add(a.get(tempRight));
-                }
+                
                 tempRight++;
             }
 
         while (tempLeft <= middle) {
-            {
+            
                 tmp.add(a.get(tempLeft));
-            }
+            
             tempLeft++;
         }
 
         while (tempRight <= right) {
-            {
+            
                 tmp.add(a.get(tempRight));
-            }
+            
             tempRight++;
         }
         int i = left;
@@ -196,8 +205,7 @@ class TransactionDetail {
     }
 
 
-    //maybe can try to cut to five digits then operation might be less
-    // To give the starting time of a transaction in a queue according to tier
+    //To give the starting time of a transaction in a queue according to tier
     public void calculateWaitingTime(long time) {
 
         switch (this.tier) {
@@ -224,10 +232,6 @@ class TransactionDetail {
 
     public long getWaitingTime() {
         return this.waitingTime;
-    }
-
-    public void addWaitingTime(){
-        this.waitingTime += 1000;
     }
 
     public long getEpochtime(){
