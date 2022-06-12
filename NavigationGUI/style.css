@@ -1,0 +1,19 @@
+.menu {
+    -fx-background-color: #8B0000;
+    -fx-border-color: #8B0000;
+}
+
+.button {
+    -fx-background-color: #FFF0F5;
+    -fx-background-radius: 3;
+}
+
+.search {
+    -fx-background-color: #8B0000;
+    -fx-background-radius: 38;
+}
+
+.comboBox {
+    -fx-background-color: rgba(255, 99, 71, 0.2);
+    -fx-background-radius: 30;
+}
