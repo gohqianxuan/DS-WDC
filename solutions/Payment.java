@@ -1,212 +1,100 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class Payment {
-    static Long time;
-    static String id, tier;
-    static TransactionDetail trans;
-    static int digit1 = 0, digit2;
-    static long timer1, timer2;
-    static Queue queue = new Queue();
+    
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+        PriorityQueue<Transaction> queue = new PriorityQueue<>();
+        
+        int seq = 0;
+        int milli1, milli2=0;
 
-    public static void main(String[] args) {
-        
-        Scanner in = new Scanner(System.in);
-        String[] details;
-        
-        while (in.hasNextLine()) {
-            //prompt for user input
-            String data = in.nextLine();
-            if (data.equals("EXIT")) {
+        while(sc.hasNextLine()){
+            String data = sc.nextLine();
+            if (data.equals("EXIT"))
                 break;
-            } else if (data.equals("REBOOT")) {
-                queue.clear();
-            } else {
-                //seperate data into transactionID , ePochTime and tier
-                details = data.split(" ");
-                time = Long.parseLong(details[0]);
-                id = details[1];
-                tier = details[2];
-                TransactionDetail t1 = new TransactionDetail(time, id, tier);
-                
-                //put the transaction detail object into queue
-                queue.enqueue(t1);
-                
-                //check time change for every 1000ms
-                timer2 = t1.getEpochtime();
-                if (timer2 % 1000 == 0) {
-                    digit2 = digit1;
-                } else {
-                    digit2 = (int) (timer2 % 10000 / 1000);
-                }
+            else if (data.equals("REBOOT")){
+                queue.clear(); 
+                milli1 =0;
+                milli2=0;
+                seq=0;
+            }                   
+            else{
+                seq++;
+                Long time = Long.parseLong(data.substring(0, 13));
+                String id = data.substring(14, 46);
+                String tier = data.substring(47);
+                Transaction tran = new Transaction(time, id , tier, seq);
+                queue.add(tran);
 
-                if (queue.getSize() == 1) {
-                    digit1 = digit2;
+                milli1 = (int) ((time/1000)%10);
+                if(seq==1){
+                    milli2 = milli1;
                 }
-                
-                //if there is a time change detected
-                //check the size of queue
-                //size > 100 ,sort queue first
-                //size < 100 , dequeue without sorting
-                if (digit2 != digit1) {
-                    digit1 = digit2;
-                    int size = queue.getSize();
-                    if (size < 100){                        
-                        while (!queue.isEmpty()) {
-                            System.out.print(queue.dequeue().toString() + " ");
-                        }
+                if(time%1000 == 0)
+                    milli1 = milli2;
+
+                if(milli1 != milli2 ){
+                    int size = queue.size();
+                    if(size<100){
+                        for(int i=0; i<size; i++)
+                            System.out.print(queue.poll().id + " ");
                         System.out.println();
-                    }else {
-                        queue.mergeSort();
-                        for (int x = 0; x < 100; x++) {
-                            if (!queue.isEmpty()){
-                                System.out.print(queue.dequeue().toString() + " ");
-                            }
+                    }
+                    else{
+                        for(int i=0; i<100;i++){
+                             System.out.print(queue.poll().id + " ");
                         }
                         System.out.println();
                     }
+                    milli2 = milli1;
                 }
             }
+        }  
+    }
+       
+
+    static class Transaction implements Comparable<Transaction> {
+        long epoch_time;
+        String id;
+        String tier;
+        int sequence;
+
+        public int getSequence() {
+            return sequence;
         }
-    }
-}
+        
+        public long getEpoch_time() {
+            return epoch_time;
+        }
+                
+        public Transaction(long epoch_time, String id, String tier, int sequence){
 
-class MergeSort {
-    static ArrayList<TransactionDetail> tmp;
+            this.id = id;
+            this.tier = tier;
+            this.sequence = sequence;
+            if(tier.equals("SILVER"))
+                this.epoch_time = epoch_time - 1000;
+            else if(tier.equals("GOLD"))
+                this.epoch_time = epoch_time - 2000;
+            else if(tier.equals("PLATINUM"))
+                this.epoch_time = epoch_time - 3000;
+            else 
+                this.epoch_time = epoch_time;   
+        }
 
-    public static void mergeSort(ArrayList<TransactionDetail> a,  int left, int right) {
-        int middle = (left + right) / 2;
-        if (left < right) {
-            mergeSort(a,  left, middle); //sort left half
-            mergeSort(a,  middle + 1, right); //sort right half
-            mergeSortedLists(a,  left, middle, right);
-        } //merge
-    }
-
-    public static void mergeSortedLists(ArrayList<TransactionDetail> a,  int left, int middle, int right) {
-        tmp = new ArrayList<TransactionDetail>();
-        int tempLeft = left;
-        int tempRight = middle + 1;
-        while (tempLeft <= middle && tempRight <= right)
-            if (a.get(tempLeft).getWaitingTime() <= (a.get(tempRight).getWaitingTime())) {
-                tmp.add(a.get(tempLeft));
-                tempLeft++;
-            } else {
-                tmp.add(a.get(tempRight));
-                tempRight++;
+        @Override
+        public int compareTo(Transaction o) {
+            if (this.getEpoch_time() > o.getEpoch_time())
+                return 1;
+            else if (this.getEpoch_time() == o.getEpoch_time()){
+                if(this.getSequence()>o.getSequence())
+                    return 1;
+                else
+                    return -1;
             }
-
-        while (tempLeft <= middle) {
-            tmp.add(a.get(tempLeft));
-            tempLeft++;
-        }
-
-        while (tempRight <= right) {
-            tmp.add(a.get(tempRight));
-            tempRight++;
-        }
-        
-        int i = left;
-        for (TransactionDetail value : tmp) {
-            a.set(i, value);
-            i++;
-        }
-    }
-}
-
-class Queue {
-    ArrayList<TransactionDetail> priorityList;
-
-    public Queue() {
-        priorityList = new ArrayList<>();
-    }
-
-    public void enqueue(TransactionDetail elements){
-        if (priorityList.size() == 0 ) {
-            priorityList.add(0,elements);
-        } else {
-            priorityList.add(elements);
-        }
-    }
-
-    public void setPriorityList(ArrayList<TransactionDetail> list){
-        Collections.copy(priorityList, list);
-    }
-    
-    public void clear() {
-        priorityList.clear();
-    }
-
-    public int getSize() {
-        return priorityList.size();
-    }
-    
-    public boolean isEmpty() {
-        return priorityList.isEmpty();
-    }
-
-    public TransactionDetail dequeue() {
-        if (priorityList.isEmpty()) return null;
-        return priorityList.remove(0);
-        
-    }
-
-    public TransactionDetail get(int index){
-        if(priorityList.isEmpty()) return null;
-        return priorityList.get(index);
-    }
-
-    public void mergeSort () {
-        MergeSort.mergeSort(priorityList, 0, priorityList.size()-1);
-    }
-}
-
-class TransactionDetail {
-    private long epochTime;
-    private String tier;
-    private String transactionID;
-    private long waitingTime;
-
-    public TransactionDetail(long time, String ID, String tier) {
-        this.epochTime = time;
-        this.tier = tier;
-        this.transactionID = ID;
-        calculateWaitingTime(time);
-    }
-
-    //to give the starting time of a transaction in a queue according to tier
-    public void calculateWaitingTime(long time) {
-        switch (this.tier) {
-            case "PLATINUM":
-                waitingTime = epochTime - 3000 ;
-                break;
-            case "GOLD":
-                waitingTime = epochTime - 2000 ;
-                break;
-            case "SILVER":
-                waitingTime = epochTime - 1000 ;
-                break;
-            case "BRONZE":
-                waitingTime = epochTime;
-                break;
-        }
-
-    }
-    
-    public String getID() {
-        return this.transactionID;
-    }
-
-    public long getWaitingTime() {
-        return this.waitingTime;
-    }
-
-    public long getEpochtime(){
-        return this.epochTime;
-    }
-
-    public String toString() {
-        return transactionID;
+            else
+                return -1;                
+        }  
     }
 }
