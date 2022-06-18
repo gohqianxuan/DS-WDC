@@ -83,7 +83,10 @@ public class Payment {
         public long getEpoch_time() {
             return epoch_time;
         }
-                
+        
+
+        //store the transaction details
+        //update the epoch time according to user tier     
         public Transaction(long epoch_time, String id, String tier, int sequence){
 
             this.id = id;
@@ -98,7 +101,9 @@ public class Payment {
             else 
                 this.epoch_time = epoch_time;   
         }
+        
 
+        //give priority to transactions 
         @Override
         public int compareTo(Transaction o) {
             if (this.getEpoch_time() > o.getEpoch_time())
