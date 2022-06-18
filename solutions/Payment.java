@@ -49,7 +49,7 @@ public class Payment {
                 if(time%1000 == 0)
                     milli1 = milli2;
 
-                //for every 1000ms, dequeue the transactions according to the queue's size
+                //for every 1000ms, dequeue transactions according to the queue's size
                 if(milli1 != milli2 ){
                     int size = queue.size();
                     if(size<100){
@@ -85,8 +85,8 @@ public class Payment {
         }
         
 
-        //store the transaction details
-        //update the epoch time according to user tier     
+        //store transaction details
+        //update epoch time according to user tier     
         public Transaction(long epoch_time, String id, String tier, int sequence){
 
             this.id = id;
