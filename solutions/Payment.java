@@ -4,15 +4,24 @@ public class Payment {
     
     public static void main (String[] args){
         Scanner sc = new Scanner(System.in);
+        
+        //priority queue to store the transactions
         PriorityQueue<Transaction> queue = new PriorityQueue<>();
         
+        //give sequence to each transaction
         int seq = 0;
+        
+        //calculate change in epoch time
         int milli1, milli2=0;
 
         while(sc.hasNextLine()){
             String data = sc.nextLine();
+            
+            //exit the program if input equals to "EXIT"
             if (data.equals("EXIT"))
                 break;
+            
+            //reset everything
             else if (data.equals("REBOOT")){
                 queue.clear(); 
                 milli1 =0;
@@ -20,20 +29,27 @@ public class Payment {
                 seq=0;
             }                   
             else{
+                //give sequence to every transaction
                 seq++;
+                
+                //get time, transactionID, tier from user input and store in Transaction class
                 Long time = Long.parseLong(data.substring(0, 13));
                 String id = data.substring(14, 46);
                 String tier = data.substring(47);
                 Transaction tran = new Transaction(time, id , tier, seq);
                 queue.add(tran);
 
+                //detect change of 1000ms in epoch time
                 milli1 = (int) ((time/1000)%10);
                 if(seq==1){
                     milli2 = milli1;
                 }
+                
+  
                 if(time%1000 == 0)
                     milli1 = milli2;
 
+                //for every 1000ms, dequeue the transactions according to the queue's size
                 if(milli1 != milli2 ){
                     int size = queue.size();
                     if(size<100){
