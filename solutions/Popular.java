@@ -6,53 +6,16 @@ public class Popular {
     // Tester 
     public static void main(String[] args) {            
         Scanner sc = new Scanner(System.in);
-   //     ArrayList<String> stationName = new ArrayList<>();
-   //     ArrayList<Station> stationList = new ArrayList<>();
         
 	// Get number of test case
 	int n = Integer.parseInt(sc.nextLine());
-//
-	for (int z = 0; z < n; z++) {
-		 ArrayList<String> stationName = new ArrayList<>();
-                 ArrayList<Station> stationList = new ArrayList<>();
-//		// Get number of connections from cases provided
-//    		int numOfConnections = Integer.parseInt(sc.nextLine());
-//    		Navigation map = new Navigation();
-//		
-//		// Add edge for every connections
-//		for (int j = 0; j < numOfConnections; j++) {
-//			String[] connection = sc.nextLine().split(" => ");
-//			String source = connection[0];
-//			String destination = connection[1];
-//
-//			map.addEdge(source, destination);
-//		}
-//
-//		// Get queries from the cases provided
-//		int numOfQueries = Integer.parseInt(sc.nextLine());
-//
-//		// Find the shortest path for every queries
-//		for (int k = 0; k < numOfQueries; k++) {
-//			String[] path = sc.nextLine().split(" -> ");
-//			String from = path[0];
-//			String to = path[1];
-//
-//			map.printShortestDistance(from, to);
-//		}
-//	}
 
-        // Tester(Download test case from github)
-//        try{
-//            Scanner read = new Scanner(new FileInputStream("popular1.txt"));
-            
-            // get number of trip with tickets sold from cases provided
-            //int numOfTrip = Integer.parseInt(read.nextLine());
-            //Navigation g = new Navigation();
+	for (int z = 0; z < n; z++) {
+	    ArrayList<String> stationName = new ArrayList<>();
+            ArrayList<Station> stationList = new ArrayList<>();
             int numOfTrip = Integer.parseInt(sc.nextLine());
             
             for (int i = 0; i < numOfTrip; i++) {
-                //String str = read.nextLine().replace("->", "");
-                //String[] trip = read.nextLine().split(" ");
                 String[] trip = sc.nextLine().split(" ");
                 int indexSplit= 0, tickets = 0;
                 String station1="", station2="";
@@ -90,17 +53,12 @@ public class Popular {
                     stationList.get(index2).setVisited(visited2 + tickets);
                 }
             }
-//            read.close();
-//        } catch (FileNotFoundException e){
-//            System.out.println("File was not found.");
-//        }
         
         System.out.println(stationName.size());
         selectionSort(stationList);
         for(Station popular: stationList){
             System.out.println(popular.toString());
         }
-        
        }
     }
     
