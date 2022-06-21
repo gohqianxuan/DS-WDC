@@ -5,7 +5,7 @@ Utah -> Kuang 137
  Hulu Perak -> Georgia 316
 Tampa -> Jelebu 173
 Choa Chu Kang -> Shinjuku 384
-Delaware -> St. John?s East 103
+Delaware -> St. John East 103
 Odaiba -> Nevada 416
 Odaiba -> District of Columbia 381
 Putra Heights -> California 488
@@ -158,7 +158,7 @@ Norwich City -> Barcelona 365
 Telok Menegun -> Warwick 140
 Nebraska -> Mississippi 185
 South Dakota -> Shibuya 162
-Clementi -> St. John?s East 455
+Clementi -> St. John East 455
 Baling -> Serdang 334
 Beranang -> Besut 399
 Liverpool -> Api-Api 211
@@ -208,7 +208,7 @@ Lipis -> Baling 444
 Maryland -> Api-Api 185
 Real Betis -> North Carolina 444
 Utah -> Arizona 286
-Country Heights -> St. John?s East 112
+Country Heights -> St. John East 112
 Cheshire East -> Georgia 273
 Bristol -> Puchong 205
 Iowa -> Blackpool 341
@@ -277,7 +277,7 @@ Arkansas -> Montana 324
 Serdang -> South Carolina 116
 Sevilla -> Jurong East 291
 Woodlands -> Bandar Baru Bangi 401
-St. John?s East -> Pandamaran 209
+St. John East -> Pandamaran 209
 Cheshire East -> Beranang 393
 Damansara -> Arizona 144
 Bukit Raja -> Jeram 464
@@ -442,7 +442,7 @@ Balakong -> Ijok 362
 Nevada -> Cheshire East 412
 Baling -> Jelebu 468
 Tennessee -> Missouri 172
-St. John?s East -> Perlis 480
+St. John East -> Perlis 480
 Puerto Rico -> Puchong Perdana 305
 Bristol -> North Dakota 344
 Perlis -> Cheras 425
@@ -563,7 +563,7 @@ Cheshire East -> Pelabuhan Klang 108
 Kampong Ubi -> Virginia 233
 Manchester City -> Jurong East 284
 Glenmarie Cove -> Avalon 156
-Arkansas -> St. John?s East 198
+Arkansas -> St. John East 198
 Glenmarie Cove -> Batu Pahat 420
 Real Betis -> Kentucky 249
 Balakong -> Selama 302
@@ -642,7 +642,7 @@ Cyberjaya -> Perlis 289
 Putra Heights -> South Dakota 489
 Selama -> Oklahoma 136
 Bandar Baru Bangi -> Norwich City 325
-St. John?s East -> Kapar 484
+St. John East -> Kapar 484
 Tampa -> Besut 326
 New York -> Beranang 273
 Puchong Perdana -> Paya Lebar 128
@@ -668,7 +668,7 @@ Paya Lebar -> Bukit Kemuning 443
 Vermont -> Ara Damansara 327
 Darlington -> North Dakota 291
 Newton -> Oregon 112
-St. John?s East -> Bandar Sri Damansara 265
+St. John East -> Bandar Sri Damansara 265
 Labrador -> Dengkil 413
 Damansara -> Clementi 332
 Batu Caves -> Puerto Rico 341
@@ -759,7 +759,7 @@ South Dakota -> Kapar 248
 Setapak -> Loyang 259
 Putra Heights -> Bandar Baru Bangi 147
 Destin -> Cumbria 117
-Putra Heights -> St. John?s East 456
+Putra Heights -> St. John East 456
 American Samoa -> Idaho 248
 Real Betis -> Orlando 349
 Vermont -> Batu Pahat 427
@@ -812,7 +812,7 @@ Colorado -> Bandar Tun Hussein Onn 486
 Man United -> Shah Alam 317
 Jelebu -> Kampar 448
 Kent -> Sengkang 498
-Pasangan -> St. John?s East 480
+Pasangan -> St. John East 480
 Missouri -> Warwick 231
 Arizona -> Sungai Buloh 398
 Pennsylvania -> Tanjung Karang 474
@@ -931,7 +931,7 @@ Perlis -> Warwick 235
 Burnley -> Louisiana 234
 Subang Jaya -> Tottenham 434
 Bandar Tun Hussein Onn -> Wyoming 125
-Bukit Raja -> St. John?s East 171
+Bukit Raja -> St. John East 171
 Virginia -> Bangi 334
 Avalon -> Utah 395
 Ulu Klang -> Georgia 269
@@ -1079,7 +1079,7 @@ Shah Alam , 3450
 Kampung Sungai Pusu , 3441
 Paya Lebar , 3440
 Shinjuku , 3431
-St. John?s East , 3413
+St. John East , 3413
 Real Betis , 3367
 New Mexico , 3338
 Indiana , 3329
