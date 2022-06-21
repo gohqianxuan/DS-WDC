@@ -11,7 +11,6 @@ for case in sorted(test_cases):
         print(num_rails)
         for _ in range(num_rails):
             print(f.readline(), end = "")
-            
         
         f.readline() #OUTPUT
         total_station = int(f.readline())
@@ -33,9 +32,6 @@ for case in sorted(test_cases):
             user_station.append(station.replace(" ", ""))
             user_ticket.append(ticket)     
         
-
-       
-         
         if int(user_total_station) != int(total_station):
             raise ValueError("Wrong Total Station!")
         if user_station != list1:
