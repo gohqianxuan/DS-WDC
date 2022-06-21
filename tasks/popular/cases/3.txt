@@ -1,4 +1,4 @@
-123
+888
 Rhode Island -> Kota Raja 409
 Kota Raja -> Connecticut 317
 Beranang -> Indiana 375
@@ -21,7 +21,7 @@ New Mexico -> Utah 445
 Ohio -> American Samoa 402
 Jeram -> Puchong 284
 New Mexico -> Kampar 490
-Bangi ->  Hulu Perak 146
+Bangi -> Hulu Perak 146
 Bukit Kemuning -> Lipis 425
 Ara Damansara -> Massachusetts 267
 Kapar -> Semenyih 284
@@ -44,7 +44,7 @@ Pandamaran -> Batu Pahat 166
 Bandar Tun Hussein Onn -> Maryland 362
 Oklahoma -> Indiana 300
 Bukit Kemuning -> Telok Menegun 327
-Besut ->  Hulu Perak 378
+Besut -> Hulu Perak 378
 Besut -> Batu 4 221
 Kuala Lumpur International Airport -> Selayang 313
 Besut -> Connecticut 121
@@ -232,7 +232,7 @@ Kuala Lumpur International Airport -> Putra Heights 347
 Kapar -> Johor Bahru 463
 Iowa -> Mississippi 421
 Batu 4 -> Bestari Jaya 108
- Hulu Perak -> Ara Damansara 426
+Hulu Perak -> Ara Damansara 426
 Kajang -> Missouri 363
 Maran -> Ulu Klang 474
 Pasangan -> Iowa 194
@@ -307,14 +307,14 @@ Semenyih -> Kapar 452
 Pekan Sepang -> Kampar 249
 Bukit Raja -> Ijok 362
 Alabama -> American Samoa 461
- Hulu Perak -> Lipis 349
+Hulu Perak -> Lipis 349
 Puchong -> Tanjung Karang 233
 Kota Tinggi -> Subang Jaya 176
 Pelabuhan Klang -> California 390
 North Dakota -> Ampang 165
 Alaska -> Ijok 109
 Indiana -> Tennessee 214
- Hulu Perak -> Selama 437
+Hulu Perak -> Selama 437
 Montana -> Pennsylvania 212
 Louisiana -> Shah Alam 422
 Shah Alam -> Wisconsin 421
@@ -437,7 +437,7 @@ Country Heights -> Subang Jaya 351
 Hawaii -> Telok Menegun 389
 Maine -> Bandar Tun Hussein Onn 348
 Api-Api -> New Mexico 160
- Hulu Perak -> Puchong Perdana 460
+Hulu Perak -> Puchong Perdana 460
 Puchong -> Bandar Baru Klang 150
 Kota Tinggi -> Baling 393
 Iowa -> South Carolina 306
@@ -520,13 +520,13 @@ Cyberjaya -> Georgia 279
 Pennsylvania -> Minnesota 264
 Damansara -> Johor Bahru 121
 Missouri -> Kampung Sungai Pusu 190
- Hulu Perak -> Putra Heights 331
+Hulu Perak -> Putra Heights 331
 Alabama -> Bukit Kemuning 105
 Montana -> West Virginia 362
 Maine -> Country Heights 302
 South Carolina -> Beranang 132
 Alaska -> Lipis 394
- Hulu Perak -> Virginia 336
+Hulu Perak -> Virginia 336
 Kota Tinggi -> Nebraska 247
 Johor Bahru -> Wisconsin 426
 Utah -> Connecticut 499
@@ -744,8 +744,8 @@ Bandar Baru Bangi -> Selayang 105
 New Hampshire -> South Carolina 278
 Illinois -> New Hampshire 173
 Setapak -> Ijok 187
- Hulu Perak -> Kampung Sungai Pusu 394
-Texas ->  Hulu Perak 264
+Hulu Perak -> Kampung Sungai Pusu 394
+Texas -> Hulu Perak 264
 New Jersey -> Virginia 468
 New York -> Bestari Jaya 424
 Vermont -> Bandar Sri Damansara 434
@@ -784,12 +784,12 @@ Wisconsin -> Georgia 491
 Hawaii -> Putrajaya 251
 Sungai Buloh -> Virginia 220
 Puerto Rico -> Perlis 308
-Texas ->  Hulu Perak 283
+Texas -> Hulu Perak 283
 Lipis -> Putrajaya 382
 Wyoming -> Rhode Island 264
 Kuang -> South Carolina 431
 Minnesota -> Petaling Jaya 349
- Hulu Perak -> Virgin Islands 457
+Hulu Perak -> Virgin Islands 457
 Hawaii -> Alaska 248
 Taman Sri Nanding -> Glenmarie Cove 409
 Kentucky -> Louisiana 351
@@ -839,7 +839,7 @@ Kota Tinggi -> Bandar Baharu 125
 Kentucky -> Shah Alam 453
 Puchong -> Batu 4 376
 Batu Pahat -> American Samoa 172
- Hulu Perak -> Sungai Buloh 300
+Hulu Perak -> Sungai Buloh 300
 Virgin Islands -> Mississippi 492
 Idaho -> Texas 225
 Kentucky -> Nevada 102
@@ -851,7 +851,7 @@ Oklahoma -> Montana 221
 Bandar Baharu -> Nebraska 337
 New Mexico -> Mersing 237
 Wisconsin -> Connecticut 258
- Hulu Perak -> District of Columbia 191
+Hulu Perak -> District of Columbia 191
 Jeram -> Kampar 431
 Idaho -> Maine 362
 Country Heights -> Kansas 258
@@ -888,6 +888,7 @@ Putrajaya -> Arkansas 426
 Pasangan -> Mersing 115
 Pasangan -> Kuala Lumpur International Airport 249
 OUTPUT
+123
 Balakong , 8074
 Missouri , 8004
 Utah , 7578
@@ -937,7 +938,7 @@ Kundang , 5175
 Florida , 5165
 Putrajaya , 5157
 Bukit Raja , 5085
- Hulu Perak , 5080
+Hulu Perak , 5080
 New York , 5058
 Ara Damansara , 5056
 Maine , 5033
