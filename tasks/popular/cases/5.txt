@@ -1125,8 +1125,8 @@ Petaling Jaya , 2712
 Ulu Klang , 2680
 Country Heights , 2676
 Tampines , 2640
-Darlington , 2614
 Ampang , 2614
+Darlington , 2614
 Alabama , 2610
 Kentucky , 2595
 Hawaii , 2574
