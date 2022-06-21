@@ -60,3 +60,17 @@ jobs:
         run: time bash tasks/histogram/run.sh
       - name: Test 3
         run: time bash tasks/histogram/run.sh
+        
+  Test-Popular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Compile solution
+        run: javac solutions/Popular.java
+      - name: Test 1
+        run: time bash tasks/popular/run.sh
+      - name: Test 2
+        run: time bash tasks/popular/run.sh
+      - name: Test 3
+        run: time bash tasks/popular/run.sh
