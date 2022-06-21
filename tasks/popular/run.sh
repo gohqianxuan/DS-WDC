@@ -1,6 +1,6 @@
 #!/bin/bash
-VERBOSE=true
-TIMELIMIT=5s
+VERBOSE=$1
+TIMELIMIT=0.5s
 mkfifo iopipe0 iopipe1
 
 if [[ $VERBOSE ]]
