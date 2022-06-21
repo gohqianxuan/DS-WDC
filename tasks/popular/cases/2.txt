@@ -299,7 +299,7 @@ Nevada -> Lipis 497
 Pasangan -> Balakong 384
 Baling -> Maran 471
 OUTPUT
-124
+123
 Rhode Island , 3005
 Wisconsin , 2979
 Vermont , 2929
