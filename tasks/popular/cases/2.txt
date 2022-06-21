@@ -1,4 +1,4 @@
-124
+299
 Batu Caves -> Bukit Kemuning 247
 Bandar Tun Hussein Onn -> Mississippi 347
 Mississippi -> Arizona 336
@@ -299,6 +299,7 @@ Nevada -> Lipis 497
 Pasangan -> Balakong 384
 Baling -> Maran 471
 OUTPUT
+124
 Rhode Island , 3005
 Wisconsin , 2979
 Vermont , 2929
