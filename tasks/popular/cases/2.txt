@@ -306,7 +306,6 @@ Vermont , 2929
 Cyberjaya , 2740
 Pelabuhan Klang , 2664
 Ampang , 2600
-Ampang , 2600
 Tanjung Karang , 2551
 Delaware , 2545
 Mersing , 2498
