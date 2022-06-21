@@ -368,8 +368,8 @@ Pandamaran , 1339
 Indiana , 1328
 Dengkil , 1323
 Florida , 1315
-Iowa , 1304
 Virgin Islands , 1304
+Iowa , 1304
 Guam , 1302
 West Virginia , 1298
 Connecticut , 1285
