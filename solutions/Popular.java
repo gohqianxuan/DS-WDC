@@ -54,12 +54,12 @@ public class Popular {
                 }
             }
         
-        System.out.println(stationName.size());
-        selectionSort(stationList);
-        for(Station popular: stationList){
-            System.out.println(popular.toString());
+            System.out.println(stationName.size());
+            selectionSort(stationList);
+            for(Station popular: stationList){
+                System.out.println(popular.toString());
+            }
         }
-       }
     }
     
     static class Station{
