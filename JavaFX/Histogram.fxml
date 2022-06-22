@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="777.0" style="-fx-background-color: #FFE4E1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HistogramController">
+   <children>
+      <VBox prefHeight="514.0" prefWidth="180.0" spacing="8.0" style="-fx-background-color: #8B0000;" styleClass="menu" stylesheets="@style.css">
+         <children>
+            <Label alignment="CENTER" prefHeight="59.0" prefWidth="190.0" text="Menu" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#toPayment" prefHeight="66.0" prefWidth="180.0" stylesheets="@style.css" text="Payment" textFill="MAROON">
+               <font>
+                  <Font name="Cambria Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="navigation" mnemonicParsing="false" onAction="#toNavigation" prefHeight="66.0" prefWidth="180.0" stylesheets="@style.css" text="Navigation" textFill="MAROON">
+               <font>
+                  <Font name="Cambria Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="180.0" stylesheets="@style.css" text="Histogram" textFill="MAROON">
+               <font>
+                  <Font name="Cambria Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Label layoutX="219.0" layoutY="21.0" prefHeight="50.0" prefWidth="317.0" styleClass="welcome" stylesheets="@style.css" text="Welcome to Meow Rapid Transit!" textFill="MAROON">
+         <font>
+            <Font name="Cambria Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="219.0" layoutY="110.0" prefHeight="93.0" prefWidth="504.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.6666259765625" minWidth="10.0" prefWidth="132.33333333333334" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="371.33333333333326" minWidth="10.0" prefWidth="371.33333333333326" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="54.333343505859375" minHeight="10.0" prefHeight="36.33335367838542" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="87.66665649414062" minHeight="10.0" prefHeight="40.666646321614586" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="103.33334350585938" minHeight="10.0" prefHeight="33.33335367838541" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Histogram Size">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label text="Data Points" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label text="Bin" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="size" prefHeight="28.0" prefWidth="250.0" promptText="Enter the number of data points" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Consolas" size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="binInput" prefHeight="28.0" prefWidth="250.0" promptText="Enter the number of bins" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="histInput" prefHeight="28.0" prefWidth="250.0" promptText="Enter your data points" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Consolas" size="15.0" />
+               </font>
+            </TextField>
+         </children>
+      </GridPane>
+      <Label layoutX="219.0" layoutY="71.0" style="-fx-background-color: #800000; -fx-label-padding: 3 5 3 5;" text="Fill in the details to get a fancy histogram" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="submit" layoutX="219.0" layoutY="218.0" mnemonicParsing="false" onAction="#submitHist" prefHeight="22.0" prefWidth="66.0" styleClass="search" stylesheets="@style.css" text="SUBMIT" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold" size="13.0" />
+         </font>
+      </Button>
+      <VBox fx:id="histPane" layoutX="219.0" layoutY="257.0" prefHeight="243.0" prefWidth="504.0" />
+   </children>
+</AnchorPane>
