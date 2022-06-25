@@ -38,6 +38,5 @@ for case in sorted(test_cases):
             raise ValueError("Wrong Station Output!")
         if user_ticket != list2:
             raise ValueError("Wrong Ticket Counts!")
-           
 
 print("EXIT", flush=True)
